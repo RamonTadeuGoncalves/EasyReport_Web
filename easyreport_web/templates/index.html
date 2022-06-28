@@ -1,0 +1,70 @@
+{% extends 'base.html' %}
+{% block title%}
+Easy Report - Home
+{% endblock%}
+{% block pagecontent%}
+{% load static %}
+<div class="container marketing">
+
+    <div class="row">
+
+        <div class="col">
+
+            <svg width="100" height="100" role="img" aria-label="Placeholder: 100x100" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Funcionário</title>
+                <image class="rounded-circle" width="100" height="100" href="{% static 'media/round_account_circle_black_48dp.png' %}">
+            </svg>
+
+            <h2>Funcionário</h2>
+            <p><a class="btn btn-secondary" href="/cadastrar_funcionario/">Cadastrar</a></p>
+            <p><a class="btn btn-secondary" href="/listar_funcionario/">Consultar</a></p>
+            <p><a class="btn btn-secondary" href="#">Editar</a></p>
+        </div>
+
+        <div class="col">
+            <svg width="100" height="100" role="img" aria-label="Placeholder: 100x100" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Cliente</title>
+                <image class="rounded-circle" width="100" height="100" href="{% static 'media/baseline_store_black_48dp.png' %}">
+            </svg>
+
+            <h2>Cliente</h2>
+            <p><a class="btn btn-secondary" href="/cadastrar_cliente/">Cadastrar</a></p>
+            <p><a class="btn btn-secondary" href="/listar_cliente/">Consultar</a></p>
+            <p><a class="btn btn-secondary" href="#">Editar</a></p>
+        </div>
+
+        <div class="col">
+            <svg width="100" height="100" role="img" aria-label="Placeholder: 100x100" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Veículo</title>
+                <image class="rounded-circle" width="100" height="100" href="{% static 'media/baseline_directions_car_black_48dp.png' %}">
+            </svg>
+
+            <h2>Veículo</h2>
+            <p><a class="btn btn-secondary" href="/cadastrar_veiculo/">Cadastrar</a></p>
+            <p><a class="btn btn-secondary" href="/listar_veiculo/">Consultar</a></p>
+            <p><a class="btn btn-secondary" href="#">Editar</a></p>
+        </div>
+
+        <div class="col">
+            <svg width="100" height="100" role="img" aria-label="Placeholder: 100x100" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Ordem de Serviço</title>
+                <image class="rounded-circle" width="100" height="100" href="{% static 'media/baseline_assignment_black_48dp.png' %}">
+            </svg>
+
+            <h2>O.S.</h2>
+            <p><a class="btn btn-secondary" href="/cadastrar_os/">Cadastrar</a></p>
+            <p><a class="btn btn-secondary" href="/listar_os/">Consultar</a></p>
+        </div>
+
+        <div class="col">
+            <svg width="100" height="100" role="img" aria-label="Placeholder: 100x100" preserveAspectRatio="xMidYMid slice" focusable="false">
+                <title>Relatório</title>
+                <image class="rounded-circle" width="100" height="100" href="{% static 'media/baseline_task_black_48dp.png' %}">
+            </svg>
+
+            <h2>Relatório</h2>
+            <p><a class="btn btn-secondary" href="#">Consultar</a></p>
+        </div>
+    </div>
+</div>
+{% endblock %}

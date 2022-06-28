@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title%}
+Listar Veículo
+{% endblock%}
+{% block pagecontent%}
+{% load crispy_forms_tags %}
+{% load static %}
+<div id="tituloPaginas">
+    <p>LISTA DE VEÍCULOS.</p>
+</div>
+
+<div class="containerListaProfessores">
+
+    <ul>
+        {% for item in lista_itens %}
+        <li id="lista">
+            <a href="/veiculo/{{ item.veicRegistro }}" id="listaProfessores">
+                {{item.veicRegistro}} - {{item.veicPlaca}} - {{item.veicModelo}}
+            </a>
+        </li>
+        {% empty %}
+        <div id="tituloSemProfessor">
+            <p>SEM VEÍCULOS CADASTRADOS.</p>
+        </div>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% block title%}
+Cadastrar Veículo
+{% endblock%}
+{% block pagecontent%}
+{% load crispy_forms_tags %}
+{% load static %}
+<div class="containerFormulario">
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-75">
+                {{ form.veicPlaca|as_crispy_field }}
+            </div>
+            <div class="col-75">
+                {{ form.veicModelo|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-75">
+                {{ form.veicFabricante|as_crispy_field }}
+            </div>
+            <div class="col-75">
+                {{ form.veicAno|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-75">
+                {{ form.veicCor|as_crispy_field }}
+            </div>
+            <div class="col-75">
+                {{ form.veicRenavam|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <button id="formularioBotao" type="submit" class="btn btn-primary">Cadastrar</button>
+            <a id="formularioBotao" class="btn btn-secondary" href="/index/">Cancelar</a>
+            <p id="formularioBotao">*Campos Obrigatórios.</p>
+        </div>
+    </form>
+</div>
+{% endblock %}

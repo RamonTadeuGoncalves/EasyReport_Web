@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title%}
+Detalhes Ordem de Serviço
+{% endblock%}
+{% block pagecontent%}
+{% load static %}
+<div id="tituloPaginas">
+    <p>DETALHES DO CADASTRO.</p>
+</div>
+
+<div class="containerDetalhesCadastro">
+
+    <h1 id="tituloDetalhes">O.S. Número: {{ item.osNumero }}</h1>
+
+    <div class="form-row">
+        <div class="form-group col-lg-4">
+            <div class="detalhesTitulacaoEndereco">
+                <h5>Funcionario: {{item.osFuncRegistro}}</h5>
+                <h5>Cliente: {{item.osClienteRegistro}}</h5>
+                <h5>Veículo: {{item.osVeicRegistro}}</h5>
+                <h5>Data Abertura: {{item.osDataAbertura}}</h5>
+                <h5>Descrição: {{item.osDescricao}}</h5>
+                <h5>Observação: {{item.osObservacao}}</h5>
+                <h5>Tipo de Serviço: {{item.osTipoServico}}</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="botoes">
+        <a id="detalhesBotao" class="btn btn-primary" href="/listar_os/">Voltar</a>
+        <a id="detalhesBotao" class="btn btn-secondary" href="/excluir_os/{{item.pk}}/">Excluir</a>
+        <a id="detalhesBotao" class="btn btn-primary" href="/editar_os/{{item.pk}}/">Editar</a>
+    </div>
+
+</div>
+
+{% endblock %}

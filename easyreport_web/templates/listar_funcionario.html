@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title%}
+Listar Funcionário
+{% endblock%}
+{% block pagecontent%}
+{% load crispy_forms_tags %}
+{% load static %}
+<div id="tituloPaginas">
+    <p>LISTA DE FUNCIONÁRIOS.</p>
+</div>
+
+<div class="containerlistaFuncionarios">
+
+    <ul>
+        {% for item in lista_itens %}
+        <li id="lista">
+            <a href="/funcionario/{{ item.funcRegistro }}" id="listaFuncionarios">
+                {{item.funcRegistro}} - {{item.funcNome}} - {{item.funcFuncao}} - {{item.funcDpto}}
+            </a>
+        </li>
+        {% empty %}
+        <div id="tituloSemFuncionario">
+            <p>SEM FUNCIONÁRIOS CADASTRADOS.</p>
+        </div>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}

@@ -17,7 +17,7 @@ class Funcionario(models.Model):
     funcSenha = models.CharField(max_length=20)
     funcFuncao = models.CharField(max_length=50)
     funcDpto = models.CharField(max_length=50)
-    funcCnh = models.IntegerField(unique=True)
+    funcCnh = models.BigIntegerField(unique=True)
     tipoCadastro = [
         ('', 'Escolher...'),
         ('Funcionario', 'Funcionario'),
@@ -70,18 +70,18 @@ def max_value_current_year(value):
 
 class Veiculo(models.Model):
     veicRegistro = models.BigAutoField(primary_key=True)
-    veicPlaca = models.CharField(max_length=7, unique=True)
+    veicPlaca = models.CharField(max_length=8, unique=True)
     veicModelo = models.CharField(max_length=50)
     veicFabricante = models.CharField(max_length=50)
     veicCor = models.CharField(max_length=20)
-    veicRenavam = models.IntegerField(unique=True)
+    veicRenavam = models.BigIntegerField(unique=True)
     veicAno = models.PositiveIntegerField(default=current_year(), validators=[MinValueValidator(1984), max_value_current_year])
 
     class Meta:
         db_table = 'Veiculo'
     
     def __str__(self):
-        return str(self.veicRenavam)
+        return str(self.veicPlaca)
 
 class Cliente(models.Model):
     clienteRegistro = models.BigAutoField(primary_key=True)

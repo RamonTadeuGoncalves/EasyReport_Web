@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% block title%}
+Editar Ordem de Serviço
+{% endblock%}
+{% block pagecontent%}
+{% load crispy_forms_tags %}
+{% load static %}
+<div id="tituloPaginas">
+    <p>EDITAR DADOS DO CADASTRO.</p>
+</div>
+
+<div class="containerFormulario">
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-75">
+                {{ form.osFuncRegistro|as_crispy_field }}
+            </div>
+            <div class="col-75">
+                {{ form.osClienteRegistro|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-75">
+                {{ form.osVeicRegistro|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-75">
+                {{ form.osDescricao|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-75">
+                {{ form.osObservacao|as_crispy_field }}
+            </div>
+            <div class="col-75">
+                {{ form.osTipoServico|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-75">
+                {{ form.osOutros|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <button id="formularioBotao" type="submit" class="btn btn-primary">Salvar</button>
+            <a id="formularioBotao" class="btn btn-secondary" href="/index/">Cancelar</a>
+            <p id="formularioBotao">*Campos Obrigatórios.</p>
+        </div>
+    </form>
+</div>
+{% endblock %}

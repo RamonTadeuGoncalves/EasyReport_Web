@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  {% block header %}
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css" />
+
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous" />
+
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
+  <script src="{% static 'js/masks.js' %}"></script>
+
+  <div id="containerHeader">
+    <nav class="navbar navbar-expand-md navbar-light mb-4">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="/index/">
+          <img width="150" height="75" src="{% static 'media/logo_01.png' %}" alt="">
+        </a>
+        <ul class="navbar-nav mr-4 mt-2 mt-lg-0">
+          <li class="nav-item">
+            <a class="nav-link" href="/info/">Info</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/relatorio/">Notificação <span class="sr-only">(current)</span></a>
+          </li>
+          <a class="nav-link" href="/logout">Sair</a>
+        </ul>
+      </div>
+    </nav>
+  </div>
+
+  <title>
+    {% block title %} {% endblock %}
+  </title>
+
+  {% endblock %}
+</head>
+
+<body>
+  {% block pagecontent %} {% endblock %}
+</body>
+
+<footer id="footerHomepage">
+  <p>Desenvolvido por: Ramon Gonçalves</p>
+  <a href="https://www.linkedin.com/in/ramon-gon%C3%A7alves-a900bb190/" target="_blank"><img id="imgFooter" src="{% static 'media/img_linkedin_01.png' %}" alt=""></a>
+  <a href="https://github.com/RamonTadeuGoncalves" target="_blank"><img id="imgFooter" src="{% static 'media/img_github_01.png' %}" alt=""></a>
+</footer>
+
+</html>

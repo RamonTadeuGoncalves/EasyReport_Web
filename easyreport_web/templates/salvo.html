@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title%}
+Cadastro Salvo
+{% endblock%}
+{% block pagecontent%}
+{% load static %}
+<div id="tituloPaginas">
+    <p>CADASTRO REALIZADO COM SUCESSO!</p>
+</div>
+
+<div class="containerformularioSalvo">
+
+    <div class="row">
+        <img class="imgFormularioSalvo" src="{% static 'media/img_salvo_01.png' %}">
+    </div>
+    <div class="row">
+        <a id="formularioVoltar" class="btn btn-primary" href="/index/">OK</a>
+    </div>
+    <div class="formularioVoltar">
+    </div>
+
+</div>
+{% endblock %}

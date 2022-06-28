@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title%}
+Listar Cliente
+{% endblock%}
+{% block pagecontent%}
+{% load crispy_forms_tags %}
+{% load static %}
+<div id="tituloPaginas">
+    <p>LISTA DE CLIENTES.</p>
+</div>
+
+<div class="containerListaProfessores">
+
+    <ul>
+        {% for item in lista_itens %}
+        <li id="lista">
+            <a href="/cliente/{{ item.clienteRegistro }}" id="listaProfessores">
+                {{item.clienteRegistro}} - {{item.clienteNome}} - {{item.clienteRazaoSocial}} - {{item.clienteSegmento}}
+            </a>
+        </li>
+        {% empty %}
+        <div id="tituloSemProfessor">
+            <p>SEM CLIENTES CADASTRADOS.</p>
+        </div>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}

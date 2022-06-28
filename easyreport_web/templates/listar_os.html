@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title%}
+Listar O.S.
+{% endblock%}
+{% block pagecontent%}
+{% load crispy_forms_tags %}
+{% load static %}
+<div id="tituloPaginas">
+    <p>LISTA DE ORDENS DE SERVIÇO.</p>
+</div>
+
+<div class="containerListaProfessores">
+
+    <ul>
+        {% for item in lista_itens %}
+        <li id="lista">
+            <a href="/ordem_servico/{{ item.osNumero }}" id="listaProfessores">
+                {{item.osNumero}} - {{item.osDataAbertura}} - {{item.osTipoServico}}
+            </a>
+        </li>
+        {% empty %}
+        <div id="tituloSemProfessor">
+            <p>SEM ORDENS DE SERVIÇO CADASTRADAS.</p>
+        </div>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}

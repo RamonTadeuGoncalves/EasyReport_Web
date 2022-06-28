@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% block title%}
+Editar Cliente
+{% endblock%}
+{% block pagecontent%}
+{% load crispy_forms_tags %}
+{% load static %}
+<div id="tituloPaginas">
+    <p>EDITAR DADOS DO CADASTRO.</p>
+</div>
+
+<div class="containerFormulario">
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-75">
+                {{ form.clienteCnpj|as_crispy_field }}
+            </div>
+            <div class="col-75">
+                {{ form.clienteNome|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-75">
+                {{ form.clienteRazaoSocial|as_crispy_field }}
+            </div>
+            <div class="col-75">
+                {{ form.clienteEnderecoRua|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-75">
+                {{ form.clienteEnderecoNumero|as_crispy_field }}
+            </div>
+            <div class="col-75">
+                {{ form.clienteEnderecoComplemento|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-75">
+                {{ form.clienteEnderecoCidade|as_crispy_field }}
+            </div>
+            <div class="col-75">
+                {{ form.clienteEnderecoCep|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-75">
+                {{ form.clienteTelefone|as_crispy_field }}
+            </div>
+            <div class="col-75">
+                {{ form.clienteEmail|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-75">
+                {{ form.clienteRepresentante|as_crispy_field }}
+            </div>
+            <div class="col-75">
+                {{ form.clienteSegmento|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-75">
+                {{ form.clienteEnderecoEstado|as_crispy_field }}
+            </div>
+        </div>
+        <div class="row">
+            <button id="formularioBotao" type="submit" class="btn btn-primary">Salvar</button>
+            <a id="formularioBotao" class="btn btn-secondary" href="/index/">Cancelar</a>
+            <p id="formularioBotao">*Campos Obrigatórios.</p>
+        </div>
+    </form>
+</div>
+{% endblock %}

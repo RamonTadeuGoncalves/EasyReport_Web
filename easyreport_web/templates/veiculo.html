@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title%}
+Detalhes Veículo
+{% endblock%}
+{% block pagecontent%}
+{% load static %}
+<div id="tituloPaginas">
+    <p>DETALHES DO CADASTRO.</p>
+</div>
+
+<div class="containerDetalhesCadastro">
+
+    <h1 id="tituloDetalhes">{{ item.veicModelo }}</h1>
+
+    <div class="form-row">
+        <div class="form-group col-lg-4">
+            <div class="detalhesTitulacaoEndereco">
+                <h5>Registro: {{item.veicRegistro}}</h5>
+                <h5>Placa: {{item.veicPlaca}}</h5>
+                <h5>Modelo: {{item.veicModelo}}</h5>
+                <h5>Fabricante: {{item.veicFabricante}}</h5>
+                <h5>Ano: {{item.veicAno}}</h5>
+                <h5>Cor: {{item.veicCor}}</h5>
+                <h5>Renavam: {{item.veicRenavam}}</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="botoes">
+        <a id="detalhesBotao" class="btn btn-primary" href="/listar_veiculo/">Voltar</a>
+        <a id="detalhesBotao" class="btn btn-secondary" href="/excluir_veiculo/{{item.pk}}/">Excluir</a>
+        <a id="detalhesBotao" class="btn btn-primary" href="/editar_veiculo/{{item.pk}}/">Editar</a>
+    </div>
+
+</div>
+
+{% endblock %}

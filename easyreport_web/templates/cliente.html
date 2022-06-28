@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title%}
+Detalhes Cliente
+{% endblock%}
+{% block pagecontent%}
+{% load static %}
+<div id="tituloPaginas">
+    <p>DETALHES DO CADASTRO.</p>
+</div>
+
+<div class="containerDetalhesCadastro">
+
+    <h1 id="tituloDetalhes">{{ item.clienteNome }}</h1>
+
+    <div class="form-row">
+        <div class="form-group col-lg-4">
+            <div class="detalhesTitulacaoEndereco">
+                <h5>Rua: {{item.clienteEnderecoRua}}</h5>
+                <h5>Número: {{item.clienteEnderecoNumero}}</h5>
+                <h5>Complemento: {{item.clienteEnderecoComplemento}}</h5>
+                <h5>Cidade: {{item.clienteEnderecoCidade}}</h5>
+                <h5>Estado: {{item.clienteEnderecoEstado}}</h5>
+                <h5>CEP: {{item.clienteEnderecoCep}}</h5>
+            </div>
+        </div>
+        <div class="form-group col-lg-4">
+            <div class="detalhesTitulacaoEndereco">
+                <h5>Telefone: {{item.clienteTelefone}}</h5>
+                <h5>E-mail: {{item.clienteEmail}}</h5>
+                <h5>Representante: {{item.clienteRepresentante}}</h5>
+                <h5>Segmento: {{item.clienteSegmento}}</h5>
+            </div>
+        </div>
+        <div class="form-group col-lg-7">
+            <div class="detalhesMatriculaTelefone">
+                <h5>Registro: {{ item.clienteRegistro }}</h5>
+                <h5>CNPJ: {{item.clienteCnpj}}</h5>
+                <h5>Razão Social: {{item.clienteRazaoSocial}}</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="botoes">
+        <a id="detalhesBotao" class="btn btn-primary" href="/listar_cliente/">Voltar</a>
+        <a id="detalhesBotao" class="btn btn-secondary" href="/excluir_cliente/{{item.pk}}/">Excluir</a>
+        <a id="detalhesBotao" class="btn btn-primary" href="/editar_cliente/{{item.pk}}/">Editar</a>
+    </div>
+
+</div>
+{% endblock %}

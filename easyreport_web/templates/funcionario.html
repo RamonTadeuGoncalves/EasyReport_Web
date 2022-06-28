@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block title%}
+Detalhes Funcionário
+{% endblock%}
+{% block pagecontent%}
+{% load static %}
+<div id="tituloPaginas">
+    <p>DETALHES DO CADASTRO.</p>
+</div>
+
+<div class="containerDetalhesCadastro">
+
+    <h1 id="tituloDetalhes">{{ item.funcNome }}</h1>
+
+    <div class="form-row">
+        <div class="form-group col-lg-4">
+            <div class="detalhesTitulacaoEndereco">
+                <h5>Rua: {{item.funcEnderecoRua}}</h5>
+                <h5>Número: {{item.funcEnderecoNumero}}</h5>
+                <h5>Complemento: {{item.funcEnderecoComplemento}}</h5>
+                <h5>Cidade: {{item.funcEnderecoCidade}}</h5>
+                <h5>Estado: {{item.funcEnderecoEstado}}</h5>
+                <h5>CEP: {{item.funcEnderecoCep}}</h5>
+            </div>
+        </div>
+        <div class="form-group col-lg-4">
+            <div class="detalhesTitulacaoEndereco">
+                <h5>Telefone: {{item.funcTelefone}}</h5>
+                <h5>E-mail: {{item.funcEmail}}</h5>
+                <h5>Função: {{item.funcFuncao}}</h5>
+                <h5>Departamento: {{item.funcDpto}}</h5>
+            </div>
+        </div>
+        <div class="form-group col-lg-7">
+            <div class="detalhesMatriculaTelefone">
+                <h5>Registro: {{ item.funcRegistro }}</h5>
+                <h5>CPF: {{item.funcCpf}}</h5>
+                <h5>CNH: {{item.funcCnh}}</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="botoes">
+        <a id="detalhesBotao" class="btn btn-primary" href="/listar_funcionario/">Voltar</a>
+        <a id="detalhesBotao" class="btn btn-secondary" href="/excluir_funcionario/{{item.pk}}/">Excluir</a>
+        <a id="detalhesBotao" class="btn btn-primary" href="/editar_funcionario/{{item.pk}}/">Editar</a>
+    </div>
+
+</div>
+{% endblock %}

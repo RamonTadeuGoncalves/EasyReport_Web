@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title%}
+Cadastro Excluido
+{% endblock%}
+{% block pagecontent%}
+{% load static %}
+<div id="tituloPaginas">
+    <p>CADASTRO EXCLUÍDO COM SUCESSO.</p>
+</div>
+
+<div class="containerformularioSalvo">
+
+    <div class="row">
+        <img class="imgFormularioSalvo" src="{% static '/media/img_trash-bin_01.png' %}">
+    </div>
+    <div class="row">
+        <a id="formularioVoltar" class="btn btn-secondary" href="/index/">Voltar</a>
+    </div>
+    <div class="formularioVoltar">
+    </div>
+
+</div>
+{% endblock %}
