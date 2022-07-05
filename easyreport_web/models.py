@@ -9,7 +9,7 @@ class Funcionario(models.Model):
     funcNome = models.CharField(max_length=50)
     funcEnderecoRua = models.CharField(max_length=100)
     funcEnderecoNumero = models.CharField(max_length=10)
-    funcEnderecoComplemento = models.CharField(max_length=100, blank=True)
+    funcEnderecoComplemento = models.CharField(max_length=100, null=True, blank=True)
     funcEnderecoCidade = models.CharField(max_length=50)
     funcEnderecoCep = models.CharField(max_length=10)
     funcTelefone = models.CharField(max_length=20)
@@ -90,7 +90,7 @@ class Cliente(models.Model):
     clienteRazaoSocial = models.CharField(max_length=50)
     clienteEnderecoRua = models.CharField(max_length=100)
     clienteEnderecoNumero = models.CharField(max_length=10)
-    clienteEnderecoComplemento = models.CharField(max_length=100, blank=True)
+    clienteEnderecoComplemento = models.CharField(max_length=100, null=True, blank=True)
     clienteEnderecoCidade = models.CharField(max_length=50)
     clienteEnderecoCep = models.CharField(max_length=10)
     clienteTelefone = models.CharField(max_length=20)
@@ -142,8 +142,8 @@ class OrdemDeServico(models.Model):
     osVeicRegistro = models.ForeignKey(Veiculo, on_delete=models.CASCADE)
     osDataAbertura = models.DateField(auto_now=True)
     osDescricao = models.CharField(max_length=200)
-    osObservacao = models.CharField(max_length=200, blank=True)
-    osOutros = models.CharField(max_length=100, blank=True)
+    osObservacao = models.CharField(max_length=200, null=True, blank=True)
+    osOutros = models.CharField(max_length=100, null=True, blank=True)
     tiposDeServico = [
     ('', 'Escolher...'),
     ('01', 'Manutenção'),
@@ -176,11 +176,11 @@ class RelatorioDeServico(models.Model):
     relatorioContatoCliente = models.CharField(max_length=50)
     relatorioSetorClicente = models.CharField(max_length=50)
     relatorioData = models.DateField(auto_now=True)
-    relatorioEstado = models.BooleanField
-    relatorioObservacao = models.CharField(max_length=200, blank=True)
+    relatorioEstado = models.BooleanField(False)
+    relatorioObservacao = models.CharField(max_length=200, null=True, blank=True)
     relatorioFoto = models.FileField(null=True, blank=True)
-    relatorioComentarioCliente = models.CharField(max_length=200, blank=True)
-    relatorioOutros = models.CharField(max_length=100, blank=True)
+    relatorioComentarioCliente = models.CharField(max_length=200, null=True, blank=True)
+    relatorioOutros = models.CharField(max_length=100, null=True, blank=True)
     tiposDeServico = [
     ('', 'Escolher...'),
     ('01', 'Manutenção'),
