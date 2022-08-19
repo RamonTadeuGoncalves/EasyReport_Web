@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-t+w)6unvshg#n*_j8wjcie8(fsxx2u@8sb0sazx5uz6s3@%#ek
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['10.0.2.2', '127.0.0.1']
 
 
 # Application definition
@@ -39,14 +39,20 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'easyreport_web',
+    'api_rest',
+    'authentication',
     'crispy_forms',
-    'crispy_bootstrap5'
+    'crispy_bootstrap5',
+    'rest_framework',
+    'corsheaders',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
 CRISPY_TEMPLATE_PACK = 'bootstrap5'
+CORS_ORIGIN_ALLOW_ALL = True
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -83,9 +89,9 @@ WSGI_APPLICATION = 'easyreport.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': os.environ.get('DB_NAME', 'fatec_tg'),
+        'NAME': os.environ.get('DB_NAME', 'fatec_tg_api'),
         'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASS', 'Brasil@2022'),
+        'PASSWORD': os.environ.get('DB_PASS', 'postgres@2022'),
         'HOST': 'localhost',
         'PORT': '5432',
     }

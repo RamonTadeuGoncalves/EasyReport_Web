@@ -4,6 +4,9 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 from easyreport_web.models import *
 from easyreport_web.forms import *
+import requests
+
+mainUrl = ('http://127.0.0.1:8080/')
 
 # Create your views here.
 def splash(request):

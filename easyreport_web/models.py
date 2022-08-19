@@ -15,6 +15,7 @@ class Funcionario(models.Model):
     funcTelefone = models.CharField(max_length=20)
     funcEmail = models.CharField(max_length=50)
     funcSenha = models.CharField(max_length=20)
+    funcConfirmarSenha = models.CharField(max_length=20)
     funcFuncao = models.CharField(max_length=50)
     funcDpto = models.CharField(max_length=50)
     funcCnh = models.BigIntegerField(unique=True)

@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% block title%}
+Cadastrar Funcionário
+{% endblock%}
+{% block pagecontent%}
+{% load crispy_forms_tags %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'autenticacao/css/style.css'%}">
+
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-3 sidebar">
+            <div class="logo_sidebar">
+
+                <h2 class="logo">
+                    <img class="img_logo_sidebar" src="{% static 'autenticacao/img/logo_pet_lab.png'%}">
+                </h2>
+
+            </div>
+
+
+        </div>
+
+        <div class="col-md-9">
+            <div class="area_cadastrar">
+                <h2 class="titulo">Seja bem vindo</h2>
+                <p class="sub-titulo">Crie sua conta</p>
+                <hr>
+
+                <form action="{% url 'cadastro' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-75">
+                            {{ form.funcCpf|as_crispy_field }}
+                        </div>
+                        <div class="col-75">
+                            {{ form.funcNome|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-75">
+                            {{ form.funcEnderecoRua|as_crispy_field }}
+                        </div>
+                        <div class="col-75">
+                            {{ form.funcEnderecoNumero|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-75">
+                            {{ form.funcEnderecoComplemento|as_crispy_field }}
+                        </div>
+                        <div class="col-75">
+                            {{ form.funcEnderecoCidade|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-75">
+                            {{ form.funcEnderecoCep|as_crispy_field }}
+                        </div>
+                        <div class="col-75">
+                            {{ form.funcTelefone|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-75">
+                            {{ form.funcEnderecoEstado|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-75">
+                            {{ form.funcEmail|as_crispy_field }}
+                        </div>
+                        <div class="col-75">
+                            {{ form.funcSenha|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-75">
+                            {{ form.funcCnh|as_crispy_field }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-75">
+                            {{ form.funcFuncao|as_crispy_field }}
+                        </div>
+                        <div class="col-75">
+                            {{ form.funcDpto|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-75">
+                            {{ form.funcTipoCadastro|as_crispy_field }}
+                        </div>
+                    </div>
+                    <br>
+                    <button class="btn-first">Registrar</button>
+                    <br>
+
+                    {% if messages %}
+                    <br>
+                    {% for message in messages %}
+                    <div class="alert {{message.tags}}">
+                        {{message}}
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+
+                </form>
+
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+</div>
+{% endblock %}
