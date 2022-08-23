@@ -13,7 +13,7 @@ class FuncionarioForm(forms.ModelForm):
             'funcCpf', 'funcNome',
             'funcEnderecoRua', 'funcEnderecoNumero', 'funcEnderecoComplemento', 'funcEnderecoCidade', 'funcEnderecoCep',
             'funcTelefone', 'funcEmail', 'funcSenha', 'funcFuncao', 'funcDpto', 'funcCnh', 'funcTipoCadastro',
-            'funcEnderecoEstado',
+            'funcEnderecoEstado', 'funcConfirmarSenha',
         )
         labels = {
             'funcCpf':'CPF',
@@ -31,8 +31,10 @@ class FuncionarioForm(forms.ModelForm):
             'funcCnh':'CNH',
             'funcTipoCadastro':'Tipo do Cadastro',
             'funcEnderecoEstado':'Estado',
+            'funcConfirmarSenha':'Confirmar Senha',
         }
         widgets = {
             'funcSenha':forms.PasswordInput,
+            'funcConfirmarSenha':forms.PasswordInput,
         }
 

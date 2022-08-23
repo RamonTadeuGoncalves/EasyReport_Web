@@ -2,6 +2,8 @@ from re import sub
 from unicodedata import name
 from django.urls import path
 from django.views.generic import RedirectView
+
+from authentication.views import cadastro
 from easyreport_web.views import *
 
 urlpatterns = [
@@ -11,7 +13,7 @@ urlpatterns = [
     path('login/', login_user, name='login_user'),
     path('login/submit', submit_login, name='submit_login'),
     path('logout/', logout_user, name='logout_user'),
-    path('cadastrar_funcionario/', cadastrar_funcionario, name='cadastrar_funcionario'),
+    path('cadastrar_funcionario/', cadastro, name='cadastrar_funcionario'),
     path('cadastrar_veiculo/', cadastrar_veiculo, name='cadastrar_veiculo'),
     path('cadastrar_cliente/', cadastrar_cliente, name='cadastrar_cliente'),
     path('cadastrar_os/', cadastrar_os, name='cadastrar_os'),
