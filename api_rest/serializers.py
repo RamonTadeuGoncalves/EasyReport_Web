@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from easyreport_web.models import Funcionario, Veiculo, Cliente, OrdemDeServico
+from easyreport_web.models import Funcionario, Veiculo, Cliente, OrdemDeServico, RelatorioDeServico
 
 
 class FuncionarioSerializer(serializers.ModelSerializer):
@@ -34,4 +34,16 @@ class OSSerializer(serializers.ModelSerializer):
         fields = (
             'osNumero', 'osFuncRegistro', 'osClienteRegistro', 'osVeicRegistro', 'osDataAbertura', 'osDescricao', 'osObservacao', 'osTipoServico', 'osOutros'
         )
+
+class RelatorioDeServicoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = RelatorioDeServico
+
+        fields = (
+            'relatorioNumero', 'relatorioOsNumero', 'relatorioFuncRegistro', 'relatorioClienteRegistro',
+            'relatorioDescricao', 'relatorioContatoCliente', 'relatorioSetorClicente',
+            'relatorioData', 'relatorioEstado', 'relatorioObservacao', 'relatorioFoto', 'relatorioComentarioCliente',
+            'relatorioOutros', 'relatorioTipoServico'
+        )
+
 

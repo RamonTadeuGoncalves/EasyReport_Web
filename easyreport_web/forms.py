@@ -1,6 +1,3 @@
-from curses import meta
-from dataclasses import field, fields
-from statistics import mode
 from django import forms
 from .models import Cliente, Funcionario, OrdemDeServico, Veiculo
 

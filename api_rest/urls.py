@@ -9,6 +9,8 @@ urlpatterns = [
     path('cliente/', views.clienteApi),
     path('cliente/<int:id>/', views.clienteApi),
     path('ordem_servico/', views.OSApi),
-    path('ordem?servico/<int:id>/', views.OSApi),
+    path('ordem_servico/<int:id>/', views.OSApi),
+    path('relatorio_servico/', views.RelatorioDeServicoApi),
+    path('relatorio_servico/<int:id>/', views.RelatorioDeServicoApi),
 
 ]

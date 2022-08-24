@@ -1,9 +1,8 @@
 from django.views.decorators.csrf import csrf_exempt
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
-
-from easyreport_web.models import Funcionario, Veiculo, Cliente, OrdemDeServico
-from api_rest.serializers import FuncionarioSerializer, VeiculoSerializer, ClienteSerializer, OSSerializer
+from easyreport_web.models import Funcionario, Veiculo, Cliente, OrdemDeServico, RelatorioDeServico
+from api_rest.serializers import FuncionarioSerializer, VeiculoSerializer, ClienteSerializer, OSSerializer, RelatorioDeServicoSerializer
 
 
 # Create your views here.
@@ -110,4 +109,30 @@ def OSApi(request, id=0):
     elif request.method == 'DELETE':
         ordemDeServico = OrdemDeServico.objects.get(osNumero=id)
         ordemDeServico.delete()
+        return JsonResponse("Apagado com Sucesso", safe=False)
+
+@csrf_exempt
+def RelatorioDeServicoApi(request, id=0):
+    if request.method == 'GET':
+        relatorioDeServico = RelatorioDeServico.objects.all()
+        relatorioDeServico_serializer = RelatorioDeServicoSerializer(relatorioDeServico, many=True)
+        return JsonResponse(relatorioDeServico_serializer.data, safe=False)
+    elif request.method == 'POST':
+        relatorioDeServico_data = JSONParser().parse(request)
+        relatorioDeServico_serializer = RelatorioDeServicoSerializer(data=relatorioDeServico_data)
+        if relatorioDeServico_serializer.is_valid():
+            relatorioDeServico_serializer.save()
+            return JsonResponse("Adicionado com Sucesso", safe=False)
+        return JsonResponse("Falha ao Adicionar", safe=False)
+    elif request.method == 'PUT':
+        relatorioDeServico_data = JSONParser().parse(request)
+        relatorioDeServico = RelatorioDeServico.objects.get(funcRegistro=relatorioDeServico_data['relatorioNumero'])
+        relatorioDeServico_serializer = RelatorioDeServicoSerializer(relatorioDeServico, data=relatorioDeServico_data)
+        if relatorioDeServico_serializer.is_valid():
+            relatorioDeServico_serializer.save()
+            return JsonResponse("Atualizado com Sucesso", safe=False)
+        return JsonResponse("Falha ao Atualizar", safe=False)
+    elif request.method == 'DELETE':
+        relatorioDeServico = RelatorioDeServico.objects.get(relatorioNumero=id)
+        relatorioDeServico.delete()
         return JsonResponse("Apagado com Sucesso", safe=False)
