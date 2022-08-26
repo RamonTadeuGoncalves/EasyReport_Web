@@ -1,9 +1,8 @@
+from datetime import date
 from hashlib import sha256
 import os
-
 from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect, get_object_or_404
-
 from authentication.forms import FuncionarioForm
 from authentication.models import Ativacao
 from authentication.utils import password_is_valid, email_html
@@ -15,38 +14,6 @@ from easyreport_web.models import Funcionario
 
 
 # Create your views here.
-# def cadastro (request):
-#     if request.method == 'GET':
-#         if request.user.is_authenticated:
-#             return redirect('/')
-#         return render(request, 'cadastro.html')
-#     elif request.method == 'POST':
-#         usuario = request.POST.get('usuario')
-#         email = request.POST.get('email')
-#         senha = request.POST.get('senha')
-#         confirmar_senha = request.POST.get('confirmar_senha')
-#
-#         if not password_is_valid(request, senha, confirmar_senha):
-#             return redirect('/auth/cadastro')
-#         try:
-#             user = User.objects.create_user(username=usuario,
-#                                             email=email,
-#                                             password=senha,
-#                                             is_active=False)
-#             user.save()
-#
-#             token = sha256(f"{usuario}{email}".encode()).hexdigest()
-#             ativacao = Ativacao(token=token, user=user)
-#             ativacao.save()
-#
-#             path_template = os.path.join(settings.BASE_DIR, 'autenticacao/templates/emails/cadastro_confirmado.html')
-#             email_html(path_template, 'Cadastro confirmado', [email,], username=usuario, link_ativacao=f"127.0.0.1:8000/auth/ativar_conta/{token}")
-#
-#             messages.add_message(request, constants.SUCCESS, 'Usuário cadastrado com sucesso.')
-#             return redirect('/auth/logar')
-#         except:
-#             messages.add_message(request, constants.ERROR, 'Erro interno do sistema.')
-#             return redirect('/auth/cadastro')
 
 def cadastro (request):
     if request.method == 'GET':
@@ -57,17 +24,26 @@ def cadastro (request):
     elif request.method == 'POST':
         form = FuncionarioForm(request.POST)
         if form.is_valid():
-            form.save()
+            item = form.save(commit=False)
 
-            lista_itens = Funcionario.objects.order_by('-funcRegistro')[0]
-            usuario = lista_itens.funcNome
-            e_mail = lista_itens.funcEmail
-            passwd = lista_itens.funcSenha
-            confirm_passwd = lista_itens.funcConfirmarSenha
-            cadastro = lista_itens.funcTipoCadastro
+            item_funcNome = form.cleaned_data['funcNome']
+            item_funcEmail = form.cleaned_data['funcEmail']
+            item_funcTipoCadastro = form.cleaned_data['funcTipoCadastro']
+
+            today = date.today()
+            data = today.strftime("%Y")
+
+            item_funcSenha = (f"{item_funcNome}@{data}")
+            item_funcConfirmarSenha = item_funcSenha
+
+            usuario = item_funcNome
+            e_mail = item_funcEmail
+            passwd = item_funcSenha
+            confirm_passwd = item_funcConfirmarSenha
+            cadastro = item_funcTipoCadastro
 
             if not password_is_valid(request, passwd, confirm_passwd):
-                item = get_object_or_404(Funcionario, pk=lista_itens.funcRegistro)
+                item = get_object_or_404(Funcionario, pk=item.funcRegistro)
                 item.delete()
                 return render(request, 'cadastro.html', {'form': form})
 
@@ -78,6 +54,8 @@ def cadastro (request):
                                                     password=passwd,
                                                     is_active=False)
                     user.save()
+                    form.save()
+
 
                     token = sha256(f"{usuario}{e_mail}".encode()).hexdigest()
                     ativacao = Ativacao(token=token, user=user)
@@ -89,7 +67,8 @@ def cadastro (request):
                                link_ativacao=f"127.0.0.1:8000/auth/ativar_conta/{token}")
 
                     messages.add_message(request, constants.SUCCESS, 'Usuário cadastrado com sucesso.')
-                    return redirect('/auth/logar')
+
+                    return redirect('/index/')
                 except:
                     messages.add_message(request, constants.ERROR, 'Erro interno do sistema.')
                     return render(request, 'cadastro.html', {'form': form})
@@ -100,6 +79,7 @@ def cadastro (request):
                                                     password=passwd,
                                                     is_active=False)
                     user.save()
+                    form.save()
 
                     token = sha256(f"{usuario}{e_mail}".encode()).hexdigest()
                     ativacao = Ativacao(token=token, user=user)
@@ -111,7 +91,7 @@ def cadastro (request):
                                link_ativacao=f"127.0.0.1:8000/auth/ativar_conta/{token}")
 
                     messages.add_message(request, constants.SUCCESS, 'Usuário cadastrado com sucesso.')
-                    return redirect('/auth/logar')
+                    return redirect('/index/')
                 except:
                     messages.add_message(request, constants.ERROR, 'Erro interno do sistema.')
                     return render(request, 'cadastro.html', {'form': form})
@@ -120,6 +100,7 @@ def cadastro (request):
         form = FuncionarioForm()
 
     return render(request, 'cadastro.html', {'form': form})
+
 def sair(request):
     auth.logout(request)
     return redirect('/auth/logar')
@@ -134,27 +115,29 @@ def logar(request):
         password = request.POST.get('password')
         usuario = auth.authenticate(username=username, password=password)
 
+        today = date.today()
+        data = today.strftime("%Y")
+
+        item_funcSenha = (f"{username}@{data}")
+
         if not usuario:
-            messages.add_message(request, constants.ERROR, 'Usuário ou senha inválidos1')
+            messages.add_message(request, constants.ERROR, 'Usuário ou senha inválidos')
             return redirect('/auth/logar')
 
         elif usuario is not None:
             login(request, usuario)
             if usuario.has_perm('does.not.exist'):
-                return redirect('/index/')
+                if password == item_funcSenha:
+                    messages.add_message(request, constants.ERROR, 'Voce precisa trocar sua senha')
+                    logout(request)
+                    return redirect('/auth/alterar_senha')
+                else:
+                    return redirect('/index/')
             else:
                 usuario
                 messages.add_message(request, constants.ERROR, 'Voce nao tem permissao')
                 logout(request)
                 return redirect('/auth/logar')
-        # else:
-        #     messages.add_message(request, constants.ERROR, 'Usuário ou senha inválidos2')
-        #     auth.login(request, usuario)
-        #     return redirect('/')
-        # else:
-        #     auth.login(request, usuario)
-        #     return redirect('/')
-
 
 def ativar_conta(request, token):
     token = get_object_or_404(Ativacao, token=token)
@@ -168,3 +151,6 @@ def ativar_conta(request, token):
     token.save()
     messages.add_message(request, constants.SUCCESS, 'Conta ativa com sucesso')
     return redirect('/auth/logar')
+
+def alterar_senha(request):
+    return render(request, 'alterar_senha.html')

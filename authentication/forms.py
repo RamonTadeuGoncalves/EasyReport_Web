@@ -1,23 +1,20 @@
-from curses import meta
-from dataclasses import field, fields
-from statistics import mode
 from django import forms
-
-from easyreport_web.models import Funcionario, Veiculo, Cliente, OrdemDeServico
+from easyreport_web.models import Funcionario
 
 
 class FuncionarioForm(forms.ModelForm):
     class Meta:
         model = Funcionario
         fields = (
-            'funcCpf', 'funcNome',
+            'funcCpf', 'funcNome', 'funcSobrenome',
             'funcEnderecoRua', 'funcEnderecoNumero', 'funcEnderecoComplemento', 'funcEnderecoCidade', 'funcEnderecoCep',
-            'funcTelefone', 'funcEmail', 'funcSenha', 'funcFuncao', 'funcDpto', 'funcCnh', 'funcTipoCadastro',
-            'funcEnderecoEstado', 'funcConfirmarSenha',
+            'funcTelefone', 'funcEmail', 'funcFuncao', 'funcDpto', 'funcCnh', 'funcTipoCadastro',
+            'funcEnderecoEstado',
         )
         labels = {
             'funcCpf':'CPF',
             'funcNome':'Nome',
+            'funcSobrenome' : 'Sobrenome',
             'funcEnderecoRua':'Rua',
             'funcEnderecoNumero':'Número',
             'funcEnderecoComplemento':'Complemento',
@@ -25,16 +22,14 @@ class FuncionarioForm(forms.ModelForm):
             'funcEnderecoCep':'CEP',
             'funcTelefone':'Telefone',
             'funcEmail':'E-mail',
-            'funcSenha':'Senha',
             'funcFuncao':'Função',
             'funcDpto':'Departamento',
             'funcCnh':'CNH',
             'funcTipoCadastro':'Tipo do Cadastro',
             'funcEnderecoEstado':'Estado',
-            'funcConfirmarSenha':'Confirmar Senha',
         }
-        widgets = {
-            'funcSenha':forms.PasswordInput,
-            'funcConfirmarSenha':forms.PasswordInput,
-        }
+        # widgets = {
+        #     'funcSenha':forms.PasswordInput,
+        #     'funcConfirmarSenha':forms.PasswordInput,
+        # }
 

@@ -33,8 +33,13 @@ Cadastrar Funcionário
                         <div class="col-75">
                             {{ form.funcCpf|as_crispy_field }}
                         </div>
+                    </div>
+                    <div class="row">
                         <div class="col-75">
                             {{ form.funcNome|as_crispy_field }}
+                        </div>
+                        <div class="col-75">
+                            {{ form.funcSobrenome|as_crispy_field }}
                         </div>
                     </div>
                     <div class="row">
@@ -71,14 +76,7 @@ Cadastrar Funcionário
                             {{ form.funcEmail|as_crispy_field }}
                         </div>
                     </div>
-                    <div class="row">
-                        <div class="col-75">
-                            {{ form.funcSenha|as_crispy_field }}
-                        </div>
-                        <div class="col-75">
-                            {{ form.funcConfirmarSenha|as_crispy_field }}
-                        </div>
-                    </div>
+
                     <div class="row">
                         <div class="col-75">
                             {{ form.funcCnh|as_crispy_field }}

@@ -6,9 +6,9 @@ class FuncionarioSerializer(serializers.ModelSerializer):
   class Meta:
     model = Funcionario
     fields = (
-      'funcRegistro', 'funcCpf', 'funcNome',
+      'funcRegistro', 'funcCpf', 'funcNome', 'funcSobrenome',
       'funcEnderecoRua', 'funcEnderecoNumero', 'funcEnderecoComplemento', 'funcEnderecoCidade', 'funcEnderecoCep',
-      'funcTelefone', 'funcEmail', 'funcSenha', 'funcFuncao', 'funcDpto', 'funcCnh', 'funcTipoCadastro',
+      'funcTelefone', 'funcEmail', 'funcFuncao', 'funcDpto', 'funcCnh', 'funcTipoCadastro',
       'funcEnderecoEstado',
     )
 

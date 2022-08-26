@@ -5,14 +5,15 @@ class FuncionarioForm(forms.ModelForm):
     class Meta:
         model = Funcionario
         fields = (
-            'funcCpf', 'funcNome',
+            'funcCpf', 'funcNome', 'funcSobrenome',
             'funcEnderecoRua', 'funcEnderecoNumero', 'funcEnderecoComplemento', 'funcEnderecoCidade', 'funcEnderecoCep',
-            'funcTelefone', 'funcEmail', 'funcSenha', 'funcFuncao', 'funcDpto', 'funcCnh', 'funcTipoCadastro',
+            'funcTelefone', 'funcEmail', 'funcFuncao', 'funcDpto', 'funcCnh', 'funcTipoCadastro',
             'funcEnderecoEstado',
         )
         labels = {
             'funcCpf':'CPF',
             'funcNome':'Nome',
+            'funcSobrenome':'Sobrenome',
             'funcEnderecoRua':'Rua',
             'funcEnderecoNumero':'Número',
             'funcEnderecoComplemento':'Complemento',
@@ -20,16 +21,15 @@ class FuncionarioForm(forms.ModelForm):
             'funcEnderecoCep':'CEP',
             'funcTelefone':'Telefone',
             'funcEmail':'E-mail',
-            'funcSenha':'Senha',
             'funcFuncao':'Função',
             'funcDpto':'Departamento',
             'funcCnh':'CNH',
             'funcTipoCadastro':'Tipo do Cadastro',
             'funcEnderecoEstado':'Estado',
         }
-        widgets = {
-            'funcSenha':forms.PasswordInput,
-        }
+        # widgets = {
+        #     'funcSenha':forms.PasswordInput,
+        # }
 
 class VeiculoForm(forms.ModelForm):
     class Meta:
