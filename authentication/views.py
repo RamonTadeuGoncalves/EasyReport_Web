@@ -129,7 +129,7 @@ def logar(request):
             if usuario.has_perm('does.not.exist'):
                 if password == item_funcSenha:
                     messages.add_message(request, constants.ERROR, 'Voce precisa trocar sua senha')
-                    logout(request)
+                    # logout(request)
                     return redirect('/auth/alterar_senha')
                 else:
                     return redirect('/index/')
@@ -153,4 +153,29 @@ def ativar_conta(request, token):
     return redirect('/auth/logar')
 
 def alterar_senha(request):
+    if request.method == "POST":
+        usuario = request.user
+        password = request.POST.get('password')
+        confirm_passwd = request.POST.get('confirm_password')
+
+        if not password_is_valid(request, password, confirm_passwd):
+            item = get_object_or_404(Funcionario, pk=usuario.id)
+            # item.delete()
+            return redirect('/auth/alterar_senha')
+
+        try:
+            usuario.set_password(password)
+            usuario.save()
+            logout(request)
+            messages.add_message(request, constants.SUCCESS, 'Senha alterada com sucesso')
+            return redirect('/auth/logar')
+
+        except:
+            messages.add_message(request, constants.ERROR, 'Erro interno do sistema.')
+            return redirect('/auth/alterar_senha')
+
+
+
+
+    print(request.user)
     return render(request, 'alterar_senha.html')
