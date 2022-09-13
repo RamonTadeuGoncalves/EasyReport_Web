@@ -15,12 +15,12 @@ from easyreport_web.models import Funcionario
 
 # Create your views here.
 
-def cadastro (request):
+def cadastro(request):
     if request.method == 'GET':
-        if not request.user.is_authenticated:
+        if request.user.is_authenticated:
             return redirect('/')
         form = FuncionarioForm()
-        return render(request, 'cadastro.html', {'form':form})
+        return render(request, 'cadastro.html', {'form': form})
     elif request.method == 'POST':
         form = FuncionarioForm(request.POST)
         if form.is_valid():
@@ -33,7 +33,7 @@ def cadastro (request):
             today = date.today()
             data = today.strftime("%Y")
 
-            item_funcSenha = (f"{item_funcNome}@{data}")
+            item_funcSenha = (f"Fatec_ads@{data}")
             item_funcConfirmarSenha = item_funcSenha
 
             usuario = item_funcNome
@@ -63,7 +63,7 @@ def cadastro (request):
 
                     path_template = os.path.join(settings.BASE_DIR,
                                                  'authentication/templates/emails/cadastro_confirmado.html')
-                    email_html(path_template, 'Cadastro confirmado', [e_mail, ], username=usuario,
+                    email_html(path_template, 'Cadastro confirmado', [e_mail, ], username=usuario, password=passwd,
                                link_ativacao=f"127.0.0.1:8000/auth/ativar_conta/{token}")
 
                     messages.add_message(request, constants.SUCCESS, 'Usuário cadastrado com sucesso.')
@@ -87,7 +87,7 @@ def cadastro (request):
 
                     path_template = os.path.join(settings.BASE_DIR,
                                                  'authentication/templates/emails/cadastro_confirmado.html')
-                    email_html(path_template, 'Cadastro confirmado', [e_mail, ], username=usuario,
+                    email_html(path_template, 'Cadastro confirmado', [e_mail, ], username=usuario, password=passwd,
                                link_ativacao=f"127.0.0.1:8000/auth/ativar_conta/{token}")
 
                     messages.add_message(request, constants.SUCCESS, 'Usuário cadastrado com sucesso.')
@@ -118,7 +118,7 @@ def logar(request):
         today = date.today()
         data = today.strftime("%Y")
 
-        item_funcSenha = (f"{username}@{data}")
+        item_funcSenha = (f"Fatec_ads@{data}")
 
         if not usuario:
             messages.add_message(request, constants.ERROR, 'Usuário ou senha inválidos')
@@ -129,7 +129,6 @@ def logar(request):
             if usuario.has_perm('does.not.exist'):
                 if password == item_funcSenha:
                     messages.add_message(request, constants.ERROR, 'Voce precisa trocar sua senha')
-                    # logout(request)
                     return redirect('/auth/alterar_senha')
                 else:
                     return redirect('/index/')
@@ -144,12 +143,14 @@ def ativar_conta(request, token):
     if token.ativo:
         messages.add_message(request, constants.WARNING, 'Essa token já foi usado')
         return redirect('/auth/logar')
+
     user = User.objects.get(username=token.user.username)
     user.is_active = True
     user.save()
     token.ativo = True
     token.save()
     messages.add_message(request, constants.SUCCESS, 'Conta ativa com sucesso')
+
     return redirect('/auth/logar')
 
 def alterar_senha(request):
@@ -159,23 +160,17 @@ def alterar_senha(request):
         confirm_passwd = request.POST.get('confirm_password')
 
         if not password_is_valid(request, password, confirm_passwd):
-            item = get_object_or_404(Funcionario, pk=usuario.id)
-            # item.delete()
-            return redirect('/auth/alterar_senha')
+            return render(request, 'alterar_senha.html')
 
         try:
             usuario.set_password(password)
             usuario.save()
             logout(request)
-            messages.add_message(request, constants.SUCCESS, 'Senha alterada com sucesso')
+            messages.add_message(request, constants.SUCCESS, 'Senha cadastrada com sucesso')
             return redirect('/auth/logar')
 
         except:
             messages.add_message(request, constants.ERROR, 'Erro interno do sistema.')
             return redirect('/auth/alterar_senha')
 
-
-
-
-    print(request.user)
     return render(request, 'alterar_senha.html')

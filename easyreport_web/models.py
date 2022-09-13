@@ -178,9 +178,9 @@ class RelatorioDeServico(models.Model):
     relatorioContatoCliente = models.CharField(max_length=50)
     relatorioSetorClicente = models.CharField(max_length=50)
     relatorioData = models.DateField(auto_now=True)
-    relatorioEstado = models.BooleanField(False)
+    # relatorioEstado = models.BooleanField(False)
     relatorioObservacao = models.CharField(max_length=200, null=True, blank=True)
-    relatorioFoto = models.FileField(null=True, blank=True)
+    # relatorioFoto = models.FileField(null=True, blank=True)
     relatorioComentarioCliente = models.CharField(max_length=200, null=True, blank=True)
     relatorioOutros = models.CharField(max_length=100, null=True, blank=True)
     tiposDeServico = [

@@ -1,11 +1,41 @@
+from django.contrib.auth import authenticate
 from django.views.decorators.csrf import csrf_exempt
+from rest_framework import status
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
 from easyreport_web.models import Funcionario, Veiculo, Cliente, OrdemDeServico, RelatorioDeServico
-from api_rest.serializers import FuncionarioSerializer, VeiculoSerializer, ClienteSerializer, OSSerializer, RelatorioDeServicoSerializer
-
+from api_rest.serializers import FuncionarioSerializer, VeiculoSerializer, ClienteSerializer, OSSerializer, \
+    RelatorioDeServicoSerializer, UsuarioSerializer
+from django.contrib.auth.models import User
 
 # Create your views here.
+
+@csrf_exempt
+def loginApi(request, id=0):
+    if request.method == 'GET':
+        usuario = User.objects.all()
+        usuario_serializer = UsuarioSerializer(usuario, many=True)
+        return JsonResponse(usuario_serializer.data, safe=False)
+    elif request.method == 'POST':
+
+        usuario_data = JSONParser().parse(request)
+
+        usuario_serializer = UsuarioSerializer(data=usuario_data)
+
+        if not usuario_serializer.is_valid():
+            nomeUsuario = usuario_data['username']
+            senhaUsuario = usuario_data['password']
+            usuario = authenticate(username=nomeUsuario, password=senhaUsuario)
+            print(nomeUsuario)
+            print(senhaUsuario)
+            print(usuario)
+
+            if usuario is not None:
+                return JsonResponse(usuario_serializer.data, status=status.HTTP_201_CREATED)
+            else:
+                return JsonResponse("Usuario ou Senha invalido", safe=False)
+
+        return JsonResponse("Falha no login", safe=False)
 
 @csrf_exempt
 def funcionarioApi(request, id=0):
@@ -122,7 +152,7 @@ def RelatorioDeServicoApi(request, id=0):
         relatorioDeServico_serializer = RelatorioDeServicoSerializer(data=relatorioDeServico_data)
         if relatorioDeServico_serializer.is_valid():
             relatorioDeServico_serializer.save()
-            return JsonResponse("Adicionado com Sucesso", safe=False)
+            return JsonResponse(relatorioDeServico_serializer.data, status=status.HTTP_201_CREATED)
         return JsonResponse("Falha ao Adicionar", safe=False)
     elif request.method == 'PUT':
         relatorioDeServico_data = JSONParser().parse(request)

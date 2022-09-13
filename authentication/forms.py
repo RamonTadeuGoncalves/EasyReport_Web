@@ -28,8 +28,4 @@ class FuncionarioForm(forms.ModelForm):
             'funcTipoCadastro':'Tipo do Cadastro',
             'funcEnderecoEstado':'Estado',
         }
-        # widgets = {
-        #     'funcSenha':forms.PasswordInput,
-        #     'funcConfirmarSenha':forms.PasswordInput,
-        # }
 
