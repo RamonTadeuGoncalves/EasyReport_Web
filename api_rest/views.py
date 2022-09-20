@@ -7,6 +7,7 @@ from easyreport_web.models import Funcionario, Veiculo, Cliente, OrdemDeServico,
 from api_rest.serializers import FuncionarioSerializer, VeiculoSerializer, ClienteSerializer, OSSerializer, \
     RelatorioDeServicoSerializer, UsuarioSerializer
 from django.contrib.auth.models import User
+import base64
 
 # Create your views here.
 
@@ -16,26 +17,29 @@ def loginApi(request, id=0):
         usuario = User.objects.all()
         usuario_serializer = UsuarioSerializer(usuario, many=True)
         return JsonResponse(usuario_serializer.data, safe=False)
+
     elif request.method == 'POST':
-
         usuario_data = JSONParser().parse(request)
-
         usuario_serializer = UsuarioSerializer(data=usuario_data)
 
         if not usuario_serializer.is_valid():
             nomeUsuario = usuario_data['username']
             senhaUsuario = usuario_data['password']
-            usuario = authenticate(username=nomeUsuario, password=senhaUsuario)
-            print(nomeUsuario)
-            print(senhaUsuario)
-            print(usuario)
+            senha_bytes = senhaUsuario.encode('ascii')
+            message_bytes = base64.b64decode(senha_bytes)
+            senha_decriptada = message_bytes.decode('ascii')
+            # print('Senha decriptada: %s' %(senha_decriptada))
+            usuario = authenticate(username=nomeUsuario, password=senha_decriptada)
+            # print(nomeUsuario)
+            # print(senhaUsuario)
+            # print(usuario)
 
             if usuario is not None:
                 return JsonResponse(usuario_serializer.data, status=status.HTTP_201_CREATED)
-            else:
-                return JsonResponse("Usuario ou Senha invalido", safe=False)
+            # else:
+            #     return JsonResponse(status=status.HTTP_200_OK, safe=False)
 
-        return JsonResponse("Falha no login", safe=False)
+        return JsonResponse(usuario_serializer.data, status=status.HTTP_200_OK, safe=False)
 
 @csrf_exempt
 def funcionarioApi(request, id=0):
