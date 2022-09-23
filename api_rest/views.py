@@ -30,14 +30,18 @@ def loginApi(request, id=0):
             senha_decriptada = message_bytes.decode('ascii')
             # print('Senha decriptada: %s' %(senha_decriptada))
             usuario = authenticate(username=nomeUsuario, password=senha_decriptada)
-            # print(nomeUsuario)
-            # print(senhaUsuario)
-            # print(usuario)
 
             if usuario is not None:
                 return JsonResponse(usuario_serializer.data, status=status.HTTP_201_CREATED)
             # else:
-            #     return JsonResponse(status=status.HTTP_200_OK, safe=False)
+            #     nomeUsuario = 'userError'
+            #     senhaUsuario = 'userError'
+            #
+            #     user_serializer = UsuarioSerializer(userError, many=True)
+            #
+            #     userError.delete
+            #
+            #     return JsonResponse(user_serializer.data, status=status.HTTP_200_OK, safe=False)
 
         return JsonResponse(usuario_serializer.data, status=status.HTTP_200_OK, safe=False)
 

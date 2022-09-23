@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% block title%}
+Listar Relatorio de Servico
+{% endblock%}
+{% block pagecontent%}
+{% load crispy_forms_tags %}
+{% load static %}
+<div id="tituloPaginas">
+    <p>LISTA DE RELATORIOS DE SERVIÇO.</p>
+</div>
+
+<div class="containerListaProfessores">
+
+    <ul>
+        {% for item in lista_itens %}
+        <li id="lista">
+            <a href="/relatorio_servico/{{ item.relatorioNumero }}" id="listaRelatorios">
+                {{item.relatorioNumero}} - {{item.relatorioData}} - {{item.relatorioFuncRegistro}}
+            </a>
+        </li>
+        {% empty %}
+        <div id="tituloSemProfessor">
+            <p>SEM RELATORIOS DE SERVIÇO CADASTRADOS.</p>
+        </div>
+        {% endfor %}
+    </ul>
+
+</div>
+{% endblock %}

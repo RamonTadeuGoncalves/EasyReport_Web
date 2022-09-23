@@ -275,3 +275,16 @@ def excluir_os(request, nr_item):
     item = get_object_or_404(OrdemDeServico, pk=nr_item)
     item.delete()
     return render(request, 'excluido.html')
+
+def listar_relatorio(request):
+    lista_itens = RelatorioDeServico.objects.all()
+    return render(request, 'listar_relatorio.html', {'lista_itens': lista_itens})
+
+def relatorio_servico(request, nr_item):
+    relatorio_servico = get_object_or_404(RelatorioDeServico, pk=nr_item)
+    return render(request, 'relatorio_servico.html', {'item': relatorio_servico})
+
+def excluir_relatorio(request, nr_item):
+    item = get_object_or_404(RelatorioDeServico, pk=nr_item)
+    item.delete()
+    return render(request, 'excluido.html')

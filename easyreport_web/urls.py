@@ -21,10 +21,12 @@ urlpatterns = [
     path('listar_veiculo/', listar_veiculo, name='listar_veiculo'),
     path('listar_cliente/', listar_cliente, name='listar_cliente'),
     path('listar_os/', listar_os, name='listar_os'),
+    path('listar_relatorio/', listar_relatorio, name='listar_relatorio'),
     path('funcionario/<int:nr_item>/', funcionario, name='funcionario'),
     path('veiculo/<int:nr_item>/', veiculo, name='veiculo'),
     path('cliente/<int:nr_item>/', cliente, name='cliente'),
     path('ordem_servico/<int:nr_item>/', ordem_servico, name='ordem_servico'),
+    path('relatorio_servico/<int:nr_item>/', relatorio_servico, name='relatorio_servico'),
     path('editar_funcionario/<int:nr_item>/', editar_funcionario, name='editar_funcionario'),
     path('editar_veiculo/<int:nr_item>/', editar_veiculo, name='editar_veiculo'),
     path('editar_cliente/<int:nr_item>/', editar_cliente, name='editar_cliente'),
@@ -33,5 +35,6 @@ urlpatterns = [
     path('excluir_veiculo/<int:nr_item>/', excluir_veiculo, name='excluir_veiculo'),
     path('excluir_cliente/<int:nr_item>/', excluir_cliente, name='excluir_cliente'),
     path('excluir_os/<int:nr_item>/', excluir_os, name='excluir_os'),
+    path('excluir_relatorio/<int:nr_item>/', excluir_relatorio, name='excluir_relatorio'),
 
 ]

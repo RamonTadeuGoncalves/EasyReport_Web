@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% block title%}
+Detalhes Relatorio de Serviço
+{% endblock%}
+{% block pagecontent%}
+{% load static %}
+<div id="tituloPaginas">
+    <p>DETALHES DO CADASTRO.</p>
+</div>
+
+<div class="containerDetalhesCadastro">
+
+    <h1 id="tituloDetalhes">Relatorio de Servico Número: {{ item.relatorioNumero }}</h1>
+
+    <div class="form-row">
+        <div class="form-group col-lg-4">
+            <div class="detalhesTitulacaoEndereco">
+                <h5>Ordem de Servico: {{item.relatorioOsNumero}}</h5>
+                <h5>Funcionario: {{item.relatorioFuncRegistro}}</h5>
+                <h5>Cliente: {{item.relatorioClienteRegistro}}</h5>
+                <h5>Data Abertura: {{item.relatorioData}}</h5>
+                <h5>Descrição: {{item.relatorioDescricao}}</h5>
+                <h5>Contato do cliente: {{item.relatorioContatoCliente}}</h5>
+                <h5>Setor di cliente: {{item.relatorioSetorClicente}}</h5>
+                <h5>O cliente fez algum comentario? {{item.relatorioComentarioCliente}}</h5>
+                <h5>Observação: {{item.relatorioObservacao}}</h5>
+                <h5>Outros: {{item.relatorioOutros}}</h5>
+                <h5>Tipo de Serviço: {{item.relatorioTipoServico}}</h5>
+            </div>
+        </div>
+    </div>
+
+    <div class="botoes">
+        <a class="btn btn-primary" href="/listar_relatorio/">Voltar</a>
+        <a class="btn btn-secondary" href="/excluir_relatorio/{{item.pk}}/">Excluir</a>
+    </div>
+
+</div>
+
+{% endblock %}
