@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title%}
+Cadastrar Funcionário
+{% endblock%}
+{% block pagecontent%}
+{% load crispy_forms_tags %}
+{% load static %}
+<div class="containerFormulario">
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-75">
+                {{ form.servDescricao|as_crispy_field }}
+            </div>
+
+        </div>
+
+        <div class="row">
+            <button  type="submit" class="btn btn-primary">Cadastrar</button>
+            <a class="btn btn-secondary" href="/index/">Cancelar</a>
+            <p id="formularioBotao">*Campo Obrigatório.</p>
+        </div>
+    </form>
+</div>
+{% endblock %}

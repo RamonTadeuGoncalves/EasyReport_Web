@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title%}
+Editar Cliente
+{% endblock%}
+{% block pagecontent%}
+{% load crispy_forms_tags %}
+{% load static %}
+<div id="tituloPaginas">
+    <p>EDITAR DADOS DO CADASTRO.</p>
+</div>
+
+<div class="containerFormulario">
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="row">
+            <div class="col-75">
+                {{ form.servDescricao|as_crispy_field }}
+            </div>
+
+        </div>
+
+        <div class="row">
+            <button type="submit" class="btn btn-primary">Salvar</button>
+            <a class="btn btn-secondary" href="/listar_tipo_servico/">Cancelar</a>
+            <p >*Campo Obrigatório.</p>
+        </div>
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+{% block title%}
+Detalhes Funcionário
+{% endblock%}
+{% block pagecontent%}
+{% load static %}
+<div id="tituloPaginas">
+    <p>DETALHES DO CADASTRO.</p>
+</div>
+
+<div class="containerDetalhesCadastro">
+
+    <h1 id="tituloDetalhes">{{ item.servRegistro }}</h1>
+
+    <div class="form-row">
+        <div class="form-group col-lg-4">
+            <div class="detalhesTitulacaoEndereco">
+                <h5>Tipo de Servico: {{item.servDescricao}}</h5>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div class="botoes">
+        <a class="btn btn-primary" href="/listar_tipo_servico/">Voltar</a>
+        <a class="btn btn-secondary" href="/excluir_tipo_servico/{{item.pk}}/">Excluir</a>
+        <a class="btn btn-primary" href="/editar_tipo_servico/{{item.pk}}/">Editar</a>
+    </div>
+
+</div>
+{% endblock %}

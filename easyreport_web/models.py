@@ -137,28 +137,25 @@ class Cliente(models.Model):
     def __str__(self):
         return self.clienteNome
 
+class TipoServico(models.Model):
+    servRegistro = models.BigAutoField(primary_key=True)
+    servDescricao = models.CharField(max_length=100)
+    class Meta:
+        db_table = 'Tipo de Servico'
+
+    def __str__(self):
+        return self.servDescricao
+
 class OrdemDeServico(models.Model):
     osNumero = models.BigAutoField(primary_key=True)
     osFuncRegistro = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
     osClienteRegistro = models.ForeignKey(Cliente, on_delete=models.CASCADE)
     osVeicRegistro = models.ForeignKey(Veiculo, on_delete=models.CASCADE)
+    osTipoServico = models.ForeignKey(TipoServico, on_delete=models.CASCADE)
     osDataAbertura = models.DateField(auto_now=True)
     osDescricao = models.CharField(max_length=200)
     osObservacao = models.CharField(max_length=200, null=True, blank=True)
     osOutros = models.CharField(max_length=100, null=True, blank=True)
-    tiposDeServico = [
-    ('', 'Escolher...'),
-    ('01', 'Manutenção'),
-    ('02', 'Manutenção Preventiva'),
-    ('03', 'Manutenção Corretiva'),
-    ('04', 'Manutenção Preditiva'),
-    ('05', 'Vistoria Técnica'),
-    ('06', 'Limpeza'),
-    ('07', 'Limpeza Ar-condicionado'),
-    ('08', 'Treinamento'),
-    ('09', 'Outros'),
-    ]
-    osTipoServico = models.CharField(max_length=100, choices=tiposDeServico, default='')
 
     class Meta:
         db_table = 'OrdemDeServico'
@@ -205,3 +202,4 @@ class RelatorioDeServico(models.Model):
     
     def get_data_relatorio(self):
         return self.relatorioData.strftime('%d/%m/%Y')
+

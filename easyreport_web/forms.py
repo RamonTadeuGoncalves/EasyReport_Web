@@ -1,5 +1,6 @@
 from django import forms
-from .models import Cliente, Funcionario, OrdemDeServico, Veiculo
+from .models import Cliente, Funcionario, OrdemDeServico, Veiculo, TipoServico
+
 
 class FuncionarioForm(forms.ModelForm):
     class Meta:
@@ -82,4 +83,15 @@ class OSForm(forms.ModelForm):
             'osObservacao':'Observação',
             'osTipoServico':'Tipo de Serviço',
             'osOutros':'Outros',
+        }
+
+class TipoServicoForm(forms.ModelForm):
+    class Meta:
+        model = TipoServico
+        fields = (
+            'servDescricao',
+        )
+        labels = {
+            'servDescricao':'Tipo de Servico',
+
         }

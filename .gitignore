@@ -1,3 +1,6 @@
 *.pyc
 
-/migrations/
+authentication/migrations
+easyreport_web/migrations
+
+api_rest/__pycache__

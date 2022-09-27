@@ -288,3 +288,50 @@ def excluir_relatorio(request, nr_item):
     item = get_object_or_404(RelatorioDeServico, pk=nr_item)
     item.delete()
     return render(request, 'excluido.html')
+
+
+def cadastrar_tipo_servico(request):
+    if request.method == 'POST':
+        form = TipoServicoForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return render(request, 'salvo.html', {})
+
+    else:
+        form = TipoServicoForm()
+
+    return render(request, 'cadastrar_tipo_servico.html', {'form': form})
+
+def listar_tipo_servico(request):
+    lista_itens = TipoServico.objects.all()
+    return render(request, 'listar_tipo_servico.html', {'lista_itens': lista_itens})
+
+def tipo_servico(request, nr_item):
+    tipo_servico = get_object_or_404(TipoServico, pk=nr_item)
+    return render(request, 'tipo_servico.html', {'item': tipo_servico})
+
+def excluir_tipo_servico(request, nr_item):
+    item = get_object_or_404(TipoServico, pk=nr_item)
+    item.delete()
+    return render(request, 'excluido.html')
+
+
+def editar_tipo_servico(request, nr_item):
+    item = get_object_or_404(TipoServico, pk=nr_item)
+    form = TipoServicoForm(instance=item)
+    if request.method == 'POST':
+        form = TipoServicoForm(request.POST, instance=item)
+        if form.is_valid():
+            item = form.save(commit=False)
+            item.servRegistro = form.cleaned_data['servRegistro']
+            item.servDescricao = form.cleaned_data['servDescricao']
+
+            item.save()
+
+            return render(request, 'atualizado.html', {})
+
+        else:
+            return render(request, 'cadastrar_tipo_servico.html', {'form': form, 'item': item})
+
+    elif (request.method == 'GET'):
+        return render(request, 'editar_tipo_servico.html', {'form': form, 'item': item})

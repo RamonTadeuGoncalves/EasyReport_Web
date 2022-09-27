@@ -36,5 +36,9 @@ urlpatterns = [
     path('excluir_cliente/<int:nr_item>/', excluir_cliente, name='excluir_cliente'),
     path('excluir_os/<int:nr_item>/', excluir_os, name='excluir_os'),
     path('excluir_relatorio/<int:nr_item>/', excluir_relatorio, name='excluir_relatorio'),
-
+    path('cadastrar_tipo_servico/', cadastrar_tipo_servico, name='cadastrar_tipo_servico'),
+    path('listar_tipo_servico/', listar_tipo_servico, name='listar_tipo_servico'),
+    path('tipo_servico/<int:nr_item>/', tipo_servico, name='relatorio_tipo_servico'),
+    path('excluir_tipo_servico/<int:nr_item>/', excluir_tipo_servico, name='excluir_tipo_servico'),
+    path('editar_tipo_servico/<int:nr_item>/', editar_tipo_servico, name='editar_tipo_servico'),
 ]
