@@ -36,7 +36,7 @@ def cadastro(request):
             item_funcSenha = (f"Fatec_ads@{data}")
             item_funcConfirmarSenha = item_funcSenha
 
-            usuario = item_funcNome
+            usuario = item_funcEmail
             e_mail = item_funcEmail
             passwd = item_funcSenha
             confirm_passwd = item_funcConfirmarSenha
@@ -132,6 +132,9 @@ def logar(request):
                     return redirect('/auth/alterar_senha')
                 else:
                     return redirect('/index/')
+            elif password == item_funcSenha:
+                    messages.add_message(request, constants.ERROR, 'Voce precisa trocar sua senha')
+                    return redirect('/auth/alterar_senha')
             else:
                 usuario
                 messages.add_message(request, constants.ERROR, 'Voce nao tem permissao')
