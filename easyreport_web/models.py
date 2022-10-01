@@ -180,19 +180,7 @@ class RelatorioDeServico(models.Model):
     # relatorioFoto = models.FileField(null=True, blank=True)
     relatorioComentarioCliente = models.CharField(max_length=200, null=True, blank=True)
     relatorioOutros = models.CharField(max_length=100, null=True, blank=True)
-    tiposDeServico = [
-    ('', 'Escolher...'),
-    ('01', 'Manutenção'),
-    ('02', 'Manutenção Preventiva'),
-    ('03', 'Manutenção Corretiva'),
-    ('04', 'Manutenção Preditiva'),
-    ('05', 'Vistoria Técnica'),
-    ('06', 'Limpeza'),
-    ('07', 'Limpeza Ar-condicionado'),
-    ('08', 'Treinamento'),
-    ('09', 'Outros'),
-    ]
-    relatorioTipoServico = models.CharField(max_length=100, choices=tiposDeServico, default='')
+    relatorioTipoServico = models.BigIntegerField(null=False)
 
     class Meta:
         db_table = 'RelatorioDeServico'

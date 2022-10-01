@@ -3,9 +3,9 @@ from django.views.decorators.csrf import csrf_exempt
 from rest_framework import status
 from rest_framework.parsers import JSONParser
 from django.http.response import JsonResponse
-from easyreport_web.models import Funcionario, Veiculo, Cliente, OrdemDeServico, RelatorioDeServico
+from easyreport_web.models import Funcionario, Veiculo, Cliente, OrdemDeServico, RelatorioDeServico, TipoServico
 from api_rest.serializers import FuncionarioSerializer, VeiculoSerializer, ClienteSerializer, OSSerializer, \
-    RelatorioDeServicoSerializer, UsuarioSerializer
+    RelatorioDeServicoSerializer, UsuarioSerializer, TipoServicoSerializer
 from django.contrib.auth.models import User
 import base64
 
@@ -174,3 +174,10 @@ def RelatorioDeServicoApi(request, id=0):
         relatorioDeServico = RelatorioDeServico.objects.get(relatorioNumero=id)
         relatorioDeServico.delete()
         return JsonResponse("Apagado com Sucesso", safe=False)
+
+@csrf_exempt
+def TipoServicoApi(request, id=0):
+    if request.method == 'GET':
+        tipoServico = TipoServico.objects.all()
+        tipoServico_serializer = TipoServicoSerializer(tipoServico, many=True)
+        return JsonResponse(tipoServico_serializer.data, safe=False)

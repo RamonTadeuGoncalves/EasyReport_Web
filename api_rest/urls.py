@@ -14,5 +14,5 @@ urlpatterns = [
     path('ordem_servico/<int:id>/', views.OSApi),
     path('relatorio_servico/', views.RelatorioDeServicoApi),
     path('relatorio_servico/<int:id>/', views.RelatorioDeServicoApi),
-
+    path('tipo_servico/', views.TipoServicoApi),
 ]

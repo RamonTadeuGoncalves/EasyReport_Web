@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from easyreport_web.models import Funcionario, Veiculo, Cliente, OrdemDeServico, RelatorioDeServico
+from easyreport_web.models import Funcionario, Veiculo, Cliente, OrdemDeServico, RelatorioDeServico, TipoServico
 from django.contrib.auth.models import User
 
 
@@ -54,4 +54,11 @@ class RelatorioDeServicoSerializer(serializers.ModelSerializer):
             'relatorioOutros', 'relatorioTipoServico'
         )
 
+class TipoServicoSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = TipoServico
+
+        fields = (
+            'servRegistro', 'servDescricao'
+        )
 
