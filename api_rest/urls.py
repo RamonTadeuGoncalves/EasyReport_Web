@@ -5,7 +5,7 @@ urlpatterns = [
     path('usuario/', views.loginApi),
     path('usuario/<int:id>/', views.loginApi),
     path('funcionario/', views.funcionarioApi),
-    path('funcionario/<int:id>/', views.funcionarioApi),
+    path('funcionario/<str:email>/', views.funcionarioApi),
     path('veiculo/', views.veiculoApi),
     path('veiculo/<int:id>/', views.veiculoApi),
     path('cliente/', views.clienteApi),

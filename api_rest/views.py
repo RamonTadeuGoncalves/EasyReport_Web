@@ -46,9 +46,9 @@ def loginApi(request, id=0):
         return JsonResponse(usuario_serializer.data, status=status.HTTP_200_OK, safe=False)
 
 @csrf_exempt
-def funcionarioApi(request, id=0):
+def funcionarioApi(request, email='0'):
     if request.method == 'GET':
-        funcionario = Funcionario.objects.all()
+        funcionario = Funcionario.objects.filter(funcEmail=email)
         funcionario_serializer = FuncionarioSerializer(funcionario, many=True)
         return JsonResponse(funcionario_serializer.data, safe=False)
     elif request.method == 'POST':

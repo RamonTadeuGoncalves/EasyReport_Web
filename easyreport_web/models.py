@@ -17,7 +17,7 @@ class Funcionario(models.Model):
     funcEmail = models.CharField(unique=True, max_length=50)
     funcFuncao = models.CharField(max_length=50)
     funcDpto = models.CharField(max_length=50)
-    funcCnh = models.BigIntegerField(unique=True)
+    funcCnh = models.CharField(max_length=11, unique=True)
     tipoCadastro = [
         ('', 'Escolher...'),
         ('Funcionario', 'Funcionario'),
