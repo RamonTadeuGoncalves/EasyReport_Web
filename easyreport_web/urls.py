@@ -3,13 +3,13 @@ from unicodedata import name
 from django.urls import path
 from django.views.generic import RedirectView
 
-from authentication.views import cadastro
+from authentication.views import cadastro, logar
 from easyreport_web.views import *
 
 urlpatterns = [
     path('/index/', RedirectView.as_view(url='index/')),
     path('index/', index, name='index'),
-    path('', splash, name='splash'),
+    path('', logar, name='logar'),
     path('login/', login_user, name='login_user'),
     path('login/submit', submit_login, name='submit_login'),
     path('logout/', logout_user, name='logout_user'),

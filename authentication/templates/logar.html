@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
-{% block title%}
-Pet Lab | Login
-{% endblock%}
+{% block title %}
+Relatório Fácil | Login
+{% endblock %}
 {% block pagecontent%}
 {% load static %}
 {% block header %}
@@ -14,12 +14,15 @@ Pet Lab | Login
             <div class="logo_sidebar">
 
                 <h2 class="logo">
-                    <img class="img_logo_sidebar" src="{% static 'autenticacao/img/logo_pet_lab.png' %}">
+                    <img class="img_logo_sidebar" src="{% static 'autenticacao/media/logo_01.png' %}">
                 </h2>
+                <div class="footerHomepage">
+                    <p>Desenvolvido por: Ramon Gonçalves</p>
+                    <a href="https://www.linkedin.com/in/ramon-gon%C3%A7alves-a900bb190/" target="_blank"><img class="imgFooter" src="{% static 'autenticacao/media/img_linkedin_01.png' %}" alt="Foto: Github"></a>
+                    <a href="https://github.com/RamonTadeuGoncalves" target="_blank"><img class="imgFooter" src="{% static 'autenticacao/media/img_github_01.png' %}" alt="Foto: LinkedIn"></a>
+                </div>
 
             </div>
-
-
         </div>
 
         <div class="col-md-9">
@@ -40,7 +43,7 @@ Pet Lab | Login
                     {% csrf_token %}
                     <div class="form-group col-lg-6">
                         <label>Usuário:</label>
-                        <input type="text" class="form-control" placeholder="Usuário" name="username">
+                        <input type="text" class="form-control" placeholder="Email" name="username">
                     </div>
 
                     <div class="form-group col-lg-6">
@@ -48,17 +51,15 @@ Pet Lab | Login
                         <input type="password" class="form-control" placeholder="Senha" name="password">
                     </div>
                     <br>
-                    <button class="btn-first">Logar</button>
+                    <button class="btn-logar">Logar</button>
 
                 </form>
 
-<!--                <h3 style="position: absolute; bottom: 65px; font-weight: bold">Não tem uma conta ?&nbsp <a href="{% url 'cadastro' %}" class="btn btn-outline-success btn-lg">Registre-se</a> </h3>-->
             </div>
 
         </div>
 
     </div>
-
 
 </div>
 {% endblock %}

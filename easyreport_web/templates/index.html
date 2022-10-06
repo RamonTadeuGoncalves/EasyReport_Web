@@ -1,0 +1,146 @@
+{% extends 'base_plataforma.html' %}
+{% block title%}
+Relatório Fácil | Home
+{% endblock%}
+{% block pagecontent%}
+{% load static %}
+<div class="container">
+
+    <div class="row row-cols-1 row-cols-md-3 mb-3 text-center ">
+
+        <div class="card_external">
+            <div class="card mb-5 rounded-3 shadow-md ">
+                <div class="card_internal">
+                    <div>
+                        <svg width="100" height="100" role="img" aria-label="Placeholder: 100x100" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <title>Funcionário</title>
+                            <image class="rounded-circle" width="100" height="100" href="{% static 'plataforma/media/round_account_circle_black_48dp.png' %}">
+                        </svg>
+                    </div>
+
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">FUNCIONÁRIO</h4>
+                    </div>
+
+                    <div class="opcoes">
+                        <p><a class="w-100 btn btn-outline-success btn-lg" href="/auth/cadastro">Cadastrar</a></p>
+                        <p><a class="w-100 btn btn-outline-success btn-lg" href=" /listar_funcionario/">Consultar</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card_external">
+            <div class="card mb-5 rounded-3 shadow-md card_external">
+                <div class="card_internal">
+                    <div>
+                        <svg width="100" height="100" role="img" aria-label="Placeholder: 100x100" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <title>Cliente</title>
+                            <image class="rounded-circle" width="100" height="100" href="{% static 'plataforma/media/baseline_store_black_48dp.png' %}">
+                        </svg>
+                    </div>
+
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">CLIENTE</h4>
+                    </div>
+
+                    <div class="opcoes">
+                        <p><a class="w-100 btn btn-outline-success btn-lg" href="/cadastrar_cliente/">Cadastrar</a></p>
+                        <p><a class="w-100 btn btn-outline-success btn-lg" href="/listar_cliente/">Consultar</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card_external">
+            <div class="card mb-5 rounded-3 shadow-md card_external">
+                <div class="card_internal">
+                    <div>
+                        <svg width="100" height="100" role="img" aria-label="Placeholder: 100x100" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <title>Veículo</title>
+                            <image class="rounded-circle" width="100" height="100" href="{% static 'plataforma/media/baseline_directions_car_black_48dp.png' %}">
+                        </svg>
+                    </div>
+
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">VEÍCULO</h4>
+                    </div>
+
+                    <div class="opcoes">
+                        <p><a class="w-100 btn btn-outline-success btn-lg" href="/cadastrar_veiculo/">Cadastrar</a></p>
+                        <p><a class="w-100 btn btn-outline-success btn-lg" href="/listar_veiculo/">Consultar</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card_external">
+            <div class="card mb-5 rounded-3 shadow-md card_external">
+                <div class=" card_internal">
+                    <div>
+                        <svg width="100" height="100" role="img" aria-label="Placeholder: 100x100" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <title>Ordem de Serviço</title>
+                            <image class="rounded-circle" width="100" height="100" href="{% static 'plataforma/media/baseline_assignment_black_48dp.png' %}">
+                        </svg>
+                    </div>
+
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">ORDEM DE SERVIÇO</h4>
+                    </div>
+
+                    <div class="opcoes">
+                        <p><a class="w-100 btn btn-outline-success btn-lg" href="/cadastrar_os/">Cadastrar</a></p>
+                        <p><a class="w-100 btn btn-outline-success btn-lg" href="/listar_os/">Consultar</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card_external">
+            <div class="card mb-5 rounded-3 shadow-md card_external">
+                <div class=" card_internal">
+                    <div>
+                        <svg width="100" height="100" role="img" aria-label="Placeholder: 100x100" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <title>Relatório</title>
+                            <image class="rounded-circle" width="100" height="100" href="{% static 'plataforma/media/baseline_task_black_48dp.png' %}">
+                        </svg>
+                    </div>
+
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">RELATÓRIO</h4>
+                    </div>
+
+                    <div class="opcoes">
+                        <div class="opcoes_uma">
+                            <p><a class="w-100 btn btn-outline-success btn-lg" href="/listar_relatorio/">Consultar</a></p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card_external">
+            <div class="card mb-5 rounded-3 shadow-md card_external">
+                <div class=" card_internal">
+                    <div>
+                        <svg width="100" height="100" role="img" aria-label="Placeholder: 100x100" preserveAspectRatio="xMidYMid slice" focusable="false">
+                            <title>Tipo de Serviço</title>
+                            <image class="rounded-circle" width="100" height="100" href="{% static 'plataforma/media/baseline_assignment_black_48dp.png' %}">
+                        </svg>
+                    </div>
+
+                    <div class="card-header py-3">
+                        <h4 class="my-0 fw-normal">TIPOS DE SERVIÇO</h4>
+                    </div>
+
+                    <div class="opcoes">
+                        <p><a class="w-100 btn btn-outline-success btn-lg" href="/cadastrar_tipo_servico/">Cadastrar</a></p>
+                        <p><a class="w-100 btn btn-outline-success btn-lg" href="/listar_tipo_servico/">Consultar</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
