@@ -152,8 +152,8 @@ class OrdemDeServico(models.Model):
     osTipoServico = models.ForeignKey(TipoServico, on_delete=models.CASCADE)
     osDataAbertura = models.DateField(auto_now=True)
     osDescricao = models.CharField(max_length=200)
-    osObservacao = models.CharField(max_length=200, null=True, blank=True)
-    osOutros = models.CharField(max_length=100, null=True, blank=True)
+    # osObservacao = models.CharField(max_length=200, null=True, blank=True)
+    # osOutros = models.CharField(max_length=100, null=True, blank=True)
 
     class Meta:
         db_table = 'OrdemDeServico'

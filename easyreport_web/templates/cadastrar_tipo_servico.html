@@ -1,26 +1,47 @@
-{% extends 'base.html' %}
+{% extends 'base_plataforma.html' %}
 {% block title%}
-Cadastrar Funcionário
+Relatório Fácil | Cadastrar Tipo de Serviço
 {% endblock%}
 {% block pagecontent%}
 {% load crispy_forms_tags %}
 {% load static %}
-<div class="containerFormulario">
+<div class="container-fluid">
 
-    <form action="" method="POST">
-        {% csrf_token %}
-        <div class="row">
-            <div class="col-75">
-                {{ form.servDescricao|as_crispy_field }}
+    <div class="row">
+        <div class="col-md-9">
+            <div class="area_cadastrar">
+                <h2 class="titulo">Cadastro de Tipos de Serviço</h2>
+                <hr>
+                <form class="form_cadastro" action="" method="POST">
+                    {% csrf_token %}
+                    <div class="row">
+                        <div class="col-lg text_form">
+                            {{ form.servDescricao|as_crispy_field }}
+                        </div>
+                    </div>
+
+                    <div>
+                        <p id="formularioBotao">*Campo Obrigatório.</p>
+                    </div>
+
+                    <div class=" buttons_form_cadastro">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <div class="col-lg-5 ">
+                                    <button type="submit" class="btn btn-outline-success btn-lg">Cadastrar</button>
+                                </div>
+                            </div>
+
+                            <div class="col-lg">
+                                <div class="col-lg-5 ">
+                                    <a class="btn btn-outline-secondary btn-lg" href="/index/">Cancelar</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
             </div>
-
         </div>
-
-        <div class="row">
-            <button  type="submit" class="btn btn-primary">Cadastrar</button>
-            <a class="btn btn-secondary" href="/index/">Cancelar</a>
-            <p id="formularioBotao">*Campo Obrigatório.</p>
-        </div>
-    </form>
+    </div>
 </div>
 {% endblock %}

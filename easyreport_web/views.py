@@ -257,8 +257,6 @@ def editar_os(request, nr_item):
             item.osClienteRegistro = form.cleaned_data['osClienteRegistro']
             item.osVeicRegistro = form.cleaned_data['osVeicRegistro']
             item.osDescricao = form.cleaned_data['osDescricao']
-            item.osObservacao = form.cleaned_data['osObservacao']
-            item.osOutros = form.cleaned_data['osOutros']
             item.osTipoServico = form.cleaned_data['osTipoServico']
 
             item.save()

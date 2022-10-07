@@ -1,11 +1,10 @@
 {% extends 'base_plataforma.html' %}
 {% block title%}
-CRelatório Fácil | Cadastrar Funcionário
+Relatório Fácil | Cadastrar Funcionário
 {% endblock%}
 {% block pagecontent%}
 {% load crispy_forms_tags %}
 {% load static %}
-<link rel="stylesheet" href="{% static 'plataforma/css/style.css'%}">
 
 <div class="container-fluid">
     <div class="row">
@@ -92,40 +91,33 @@ CRelatório Fácil | Cadastrar Funcionário
                         </div>
                     </div>
 
-                    <br>
-                    <div class="row">
+                    <div>
+                        <p id="formularioBotao">*Campos Obrigatórios.</p>
+                    </div>
 
-                        <div class="row buttons_form_cadastro">
-                            <div class="col-lg ">
-                                <button type="submit" class="btn btn-outline-success btn-lg">Cadastrar</button>
+                    <div class=" buttons_form_cadastro">
+                        <div class="row">
+                            <div class="col-lg-2">
+                                <div class="col-lg-5 ">
+                                    <button type="submit" class="btn btn-outline-success btn-lg">Cadastrar</button>
+                                </div>
                             </div>
 
-                            <div class="col-lg ">
-                                <a class="btn btn-outline-secondary btn-lg" href="/index/">Cancelar</a>
+                            <div class="col-lg">
+                                <div class="col-lg-5 ">
+                                    <a class="btn btn-outline-secondary btn-lg" href="/index/">Cancelar</a>
+                                </div>
                             </div>
-                            <p id="formularioBotao">*Campos Obrigatórios.</p>
                         </div>
                     </div>
-                    <br>
-
-                    {% if messages %}
-                    <br>
-                    {% for message in messages %}
-                    <div class="alert {{message.tags}}">
-                        {{message}}
-                    </div>
-                    {% endfor %}
-                    {% endif %}
 
                 </form>
-
 
             </div>
 
         </div>
 
     </div>
-
 
 </div>
 {% endblock %}

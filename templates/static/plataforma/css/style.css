@@ -28,7 +28,7 @@
 }
 
 .logout {
-  font-size: 22px;
+  font-size: 17px;
 }
 
 .containerheader {
@@ -66,22 +66,34 @@
 }
 
 .buttons_form_cadastro {
-  margin-left: 25%;
+  margin-top: 5%;
 }
 
 .text_form {
   font-size: 20px;
+  color: #495057;
+}
+.text_form_descricao {
+  font-size: 20px;
 }
 
-.textinput {
-  font-size: 22px;
+.textinput,
+.textInput,
+.form-control {
+  font-size: 20px;
+  color: #212529;
+}
+
+#id_osDescricao {
+  height: 300px;
 }
 
 .select {
   border-color: lightgrey;
   background-color: transparent;
   font-size: 20px;
-  height: 48px;
+  color: #212529;
+  height: 38px;
   width: 100%;
   border-radius: 5px;
 }
@@ -93,6 +105,7 @@
   font-size: 20px;
   font-family: "Times New Roman";
   text-align: center;
+  margin-top: 6%;
 }
 
 .imgFooter {

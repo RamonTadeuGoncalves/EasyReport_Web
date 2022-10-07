@@ -46,6 +46,9 @@ class VeiculoForm(forms.ModelForm):
             'veicRenavam':'Renavam',
             'veicAno':'Ano',
         }
+        widgets = {
+            'veicRenavam':forms.TextInput,
+        }
 
 class ClienteForm(forms.ModelForm):
     class Meta:
@@ -55,7 +58,7 @@ class ClienteForm(forms.ModelForm):
         )
         labels = {
             'clienteCnpj':'CNPJ',
-            'clienteNome':'Nome',
+            'clienteNome':'Nome Fantasia',
             'clienteRazaoSocial':'Razão Social',
             'clienteEnderecoRua': 'Rua',
             'clienteEnderecoNumero':'Número',
@@ -73,16 +76,17 @@ class OSForm(forms.ModelForm):
     class Meta:
         model = OrdemDeServico
         fields = (
-            'osFuncRegistro', 'osClienteRegistro', 'osVeicRegistro', 'osDescricao', 'osObservacao', 'osTipoServico', 'osOutros'
+            'osFuncRegistro', 'osClienteRegistro', 'osVeicRegistro', 'osDescricao', 'osTipoServico',
         )
         labels = {
             'osFuncRegistro': 'Nome do Funcionário',
             'osClienteRegistro': 'Nome do Cliente',
             'osVeicRegistro': 'Placa do Veiculo',
             'osDescricao':'Descrição',
-            'osObservacao':'Observação',
             'osTipoServico':'Tipo de Serviço',
-            'osOutros':'Outros',
+        }
+        widgets = {
+            'osDescricao':forms.Textarea,
         }
 
 class TipoServicoForm(forms.ModelForm):
