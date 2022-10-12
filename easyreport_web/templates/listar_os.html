@@ -1,29 +1,45 @@
-{% extends 'base.html' %}
+{% extends 'base_plataforma.html' %}
 {% block title%}
-Listar O.S.
+Relatório Fácil | Listar O.S.
 {% endblock%}
 {% block pagecontent%}
 {% load crispy_forms_tags %}
 {% load static %}
-<div id="tituloPaginas">
-    <p>LISTA DE ORDENS DE SERVIÇO.</p>
-</div>
+<div class="container-fluid">
+    <div class="area_cadastrar">
+        <h2 class="titulo">Lista de Ordens de Serviço</h2>
+        <hr>
+        <div class="table_responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">O.S. Número</th>
+                        <th scope="col">Data Abertura</th>
+                        <th scope="col">ipo de Serviço</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in lista_itens %}
+                    <tr>
+                        <td>
+                            <a href="/ordem_servico/{{ item.osNumero }}">
+                                <button class="list_registros">
+                                    {{item.osNumero}}
+                                </button>
+                            </a>
+                        </td>
+                        <td>{{item.osDataAbertura}}</td>
+                        <td>{{item.osTipoServico}}</td>
+                    </tr>
+                    {% empty %}
+                    <div id=" tituloSemProfessor">
+                        <p>SEM DADOS CADASTRADOS.</p>
+                    </div>
+                    {% endfor %}
+                </tbody>
+            </table>
 
-<div class="containerListaProfessores">
-
-    <ul>
-        {% for item in lista_itens %}
-        <li id="lista">
-            <a href="/ordem_servico/{{ item.osNumero }}" id="listaProfessores">
-                {{item.osNumero}} - {{item.osDataAbertura}} - {{item.osTipoServico}}
-            </a>
-        </li>
-        {% empty %}
-        <div id="tituloSemProfessor">
-            <p>SEM ORDENS DE SERVIÇO CADASTRADAS.</p>
         </div>
-        {% endfor %}
-    </ul>
-
+    </div>
 </div>
 {% endblock %}

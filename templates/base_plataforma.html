@@ -20,19 +20,17 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.js"></script>
   <script src="{% static 'plataforma/js/masks.js' %}"></script>
 
+  <nav class="navbar navbar-expand-md navbar-light mb-5 containerheader">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/index/">
+        <img width="175" height="100" src="{% static 'plataforma/media/logo_01.png' %}" alt="">
+      </a>
+      <ul class="navbar-nav mr-5 mt-2 mt-lg-0">
+        <a class="nav-link logout" href="/logout">SAIR</a>
+      </ul>
+    </div>
+  </nav>
 
-  <div class="containerheader">
-    <nav class="navbar navbar-expand-md navbar-light mb-5">
-      <div class="container-fluid">
-        <a class="navbar-brand" href="/index/">
-          <img width="175" height="100" src="{% static 'plataforma/media/logo_01.png' %}" alt="">
-        </a>
-        <ul class="navbar-nav mr-5 mt-2 mt-lg-0">
-          <a class="nav-link logout" href="/logout">SAIR</a>
-        </ul>
-      </div>
-    </nav>
-  </div>
 
   <title>
     {% block title %} {% endblock %}

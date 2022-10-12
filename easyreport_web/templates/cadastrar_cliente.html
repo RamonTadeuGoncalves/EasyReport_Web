@@ -6,103 +6,98 @@ Relatório Fácil | Cadastrar Cliente
 {% load crispy_forms_tags %}
 {% load static %}
 <div class="container-fluid">
+    <div class="area_cadastrar">
+        <h2 class="titulo">Cadastro de Clientes</h2>
+        <hr>
+        <form class="form_cadastro" action="" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-5 text_form">
+                    {{ form.clienteCnpj|as_crispy_field }}
+                </div>
+            </div>
 
-    <div class="row">
-        <div class="col-md-9">
-            <div class="area_cadastrar">
-                <h2 class="titulo">Cadastro de Clientes</h2>
-                <hr>
-                <form class="form_cadastro" action="" method="POST">
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-lg-5 text_form">
-                            {{ form.clienteCnpj|as_crispy_field }}
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.clienteRazaoSocial|as_crispy_field }}
+                </div>
+                <div class="col-lg text_form">
+                    {{ form.clienteNome|as_crispy_field }}
+                </div>
+            </div>
+            <br>
 
-                    <div class="row">
-                        <div class="col-lg text_form">
-                            {{ form.clienteRazaoSocial|as_crispy_field }}
-                        </div>
-                        <div class="col-lg text_form">
-                            {{ form.clienteNome|as_crispy_field }}
-                        </div>
-                    </div>
-                    <br>
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.clienteEnderecoRua|as_crispy_field }}
+                </div>
+            </div>
 
-                    <div class="row">
-                        <div class="col-lg text_form">
-                            {{ form.clienteEnderecoRua|as_crispy_field }}
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.clienteEnderecoNumero|as_crispy_field }}
+                </div>
 
-                    <div class="row">
-                        <div class="col-lg text_form">
-                            {{ form.clienteEnderecoNumero|as_crispy_field }}
-                        </div>
-
-                        <div class="col-lg text_form">
-                            {{ form.clienteEnderecoCep|as_crispy_field }}
-                        </div>
-
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg text_form">
-                            {{ form.clienteEnderecoCidade|as_crispy_field }}
-                        </div>
-                        <div class="col-lg text_form">
-                            {{ form.clienteEnderecoEstado|as_crispy_field }}
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-lg text_form">
-                            {{ form.clienteEnderecoComplemento|as_crispy_field }}
-                        </div>
-                    </div>
-                    <br>
-
-                    <div class="row">
-                        <div class="col-lg text_form">
-                            {{ form.clienteTelefone|as_crispy_field }}
-                        </div>
-                        <div class="col-lg text_form">
-                            {{ form.clienteEmail|as_crispy_field }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg text_form">
-                            {{ form.clienteRepresentante|as_crispy_field }}
-                        </div>
-                        <div class="col-lg text_form">
-                            {{ form.clienteSegmento|as_crispy_field }}
-                        </div>
-                    </div>
-                    <div>
-                        <p id="formularioBotao">*Campos Obrigatórios.</p>
-                    </div>
-
-                    <div class=" buttons_form_cadastro">
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <div class="col-lg-5 ">
-                                    <button type="submit" class="btn btn-outline-success btn-lg">Cadastrar</button>
-                                </div>
-                            </div>
-
-                            <div class="col-lg">
-                                <div class="col-lg-5 ">
-                                    <a class="btn btn-outline-secondary btn-lg" href="/index/">Cancelar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </form>
+                <div class="col-lg text_form">
+                    {{ form.clienteEnderecoCep|as_crispy_field }}
+                </div>
 
             </div>
-        </div>
+
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.clienteEnderecoCidade|as_crispy_field }}
+                </div>
+                <div class="col-lg text_form">
+                    {{ form.clienteEnderecoEstado|as_crispy_field }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.clienteEnderecoComplemento|as_crispy_field }}
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.clienteTelefone|as_crispy_field }}
+                </div>
+                <div class="col-lg text_form">
+                    {{ form.clienteEmail|as_crispy_field }}
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.clienteRepresentante|as_crispy_field }}
+                </div>
+                <div class="col-lg text_form">
+                    {{ form.clienteSegmento|as_crispy_field }}
+                </div>
+            </div>
+            <div>
+                <p id="formularioBotao">*Campos Obrigatórios.</p>
+            </div>
+
+            <div class=" buttons_form_cadastro">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="col-lg-5 ">
+                            <button type="submit" class="btn btn-outline-success btn-lg">Cadastrar</button>
+                        </div>
+                    </div>
+
+                    <div class="col-lg">
+                        <div class="col-lg-5 ">
+                            <a class="btn btn-outline-secondary btn-lg" href="/index/">Cancelar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+
     </div>
 </div>
 {% endblock %}

@@ -1,29 +1,57 @@
-{% extends 'base.html' %}
+{% extends 'base_plataforma.html' %}
 {% block title%}
-Listar Funcionário
+Relatório Fácil | Listar Funcionários
 {% endblock%}
 {% block pagecontent%}
 {% load crispy_forms_tags %}
 {% load static %}
-<div id="tituloPaginas">
-    <p>LISTA DE FUNCIONÁRIOS.</p>
-</div>
+<div class="container-fluid">
+    <div class="area_cadastrar">
+        <h2 class="titulo">Lista de Funcionários</h2>
+        <hr>
+        <div class="table_responsive">
+            <table class="table table-striped table-sm">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Nome</th>
+                        <th scope="col">Função</th>
+                        <th scope="col">Departamento</th>
+                    </tr>
+                </thead>
 
-<div class="containerlistaFuncionarios">
+                <tbody>
+                    {% for item in lista_itens %}
+                    <tr>
+                        <td>
+                            <a href="/funcionario/{{ item.funcRegistro }}">
+                                <button class="list_registros">
+                                    {{item.funcRegistro}}
+                                </button>
+                            </a>
+                        </td>
+                        <td>
+                            {{item.funcNome}}
+                        </td>
+                        <td>
+                            {{item.funcFuncao}}
+                        </td>
+                        <td>
+                            {{item.funcDpto}}
+                        </td>
+                    </tr>
+                    {% empty %}
+                    <div id=" tituloSemProfessor">
+                        <p>SEM DADOS CADASTRADOS.</p>
+                    </div>
+                    {% endfor %}
+                </tbody>
 
-    <ul>
-        {% for item in lista_itens %}
-        <li id="lista">
-            <a href="/funcionario/{{ item.funcRegistro }}" id="listaFuncionarios">
-                {{item.funcRegistro}} - {{item.funcNome}} - {{item.funcFuncao}} - {{item.funcDpto}}
-            </a>
-        </li>
-        {% empty %}
-        <div id="tituloSemFuncionario">
-            <p>SEM FUNCIONÁRIOS CADASTRADOS.</p>
+            </table>
+
+
         </div>
-        {% endfor %}
-    </ul>
-
+    </div>
 </div>
+
 {% endblock %}

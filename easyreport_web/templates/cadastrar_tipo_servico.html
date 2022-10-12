@@ -6,42 +6,37 @@ Relatório Fácil | Cadastrar Tipo de Serviço
 {% load crispy_forms_tags %}
 {% load static %}
 <div class="container-fluid">
-
-    <div class="row">
-        <div class="col-md-9">
-            <div class="area_cadastrar">
-                <h2 class="titulo">Cadastro de Tipos de Serviço</h2>
-                <hr>
-                <form class="form_cadastro" action="" method="POST">
-                    {% csrf_token %}
-                    <div class="row">
-                        <div class="col-lg text_form">
-                            {{ form.servDescricao|as_crispy_field }}
-                        </div>
-                    </div>
-
-                    <div>
-                        <p id="formularioBotao">*Campo Obrigatório.</p>
-                    </div>
-
-                    <div class=" buttons_form_cadastro">
-                        <div class="row">
-                            <div class="col-lg-2">
-                                <div class="col-lg-5 ">
-                                    <button type="submit" class="btn btn-outline-success btn-lg">Cadastrar</button>
-                                </div>
-                            </div>
-
-                            <div class="col-lg">
-                                <div class="col-lg-5 ">
-                                    <a class="btn btn-outline-secondary btn-lg" href="/index/">Cancelar</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+    <div class="area_cadastrar">
+        <h2 class="titulo">Cadastro de Tipos de Serviço</h2>
+        <hr>
+        <form class="form_cadastro" action="" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.servDescricao|as_crispy_field }}
+                </div>
             </div>
-        </div>
+
+            <div>
+                <p id="formularioBotao">*Campo Obrigatório.</p>
+            </div>
+
+            <div class=" buttons_form_cadastro">
+                <div class="row">
+                    <div class="col-lg-2">
+                        <div class="col-lg-5 ">
+                            <button type="submit" class="btn btn-outline-success btn-lg">Cadastrar</button>
+                        </div>
+                    </div>
+
+                    <div class="col-lg">
+                        <div class="col-lg-5 ">
+                            <a class="btn btn-outline-secondary btn-lg" href="/index/">Cancelar</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
     </div>
 </div>
 {% endblock %}
