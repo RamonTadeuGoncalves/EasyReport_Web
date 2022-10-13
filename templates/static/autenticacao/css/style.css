@@ -1,8 +1,3 @@
-.sidebar {
-  background-color: #27db8f;
-  height: 100vh;
-}
-
 .logo_sidebar {
   text-align: center;
 }
@@ -11,14 +6,20 @@
   width: 100%;
 }
 
-.sidebar {
-  background-image: url("/static/autenticacao/img/fundo_background.png");
+.containerheader {
+  background-color: #27db8f;
 }
 
 .area_cadastrar {
   margin-top: 8%;
   margin-left: 15%;
   width: 70%;
+}
+
+.sidebar {
+  margin-top: 5%;
+  margin-left: 15%;
+  margin-bottom: 250px;
 }
 
 .titulo {
@@ -62,16 +63,6 @@
   background-color: green;
 }
 
-.footerHomepage {
-  background-color: #27db8f;
-  color: black;
-  font-weight: bold;
-  font-size: 15px;
-  font-family: "Times New Roman";
-  text-align: center;
-  margin-top: 600px;
-}
-
 .imgFooter {
-  width: 25px;
+  padding: 5px;
 }

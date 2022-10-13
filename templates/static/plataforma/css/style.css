@@ -62,11 +62,19 @@
 }
 
 .form_cadastro {
-  margin: 5%;
+  margin-top: 5%;
+  margin-left: 10%;
+  margin-right: 15%;
+  margin-bottom: 5%;
 }
 
-.buttons_form_cadastro {
+.table_responsive {
   margin-top: 5%;
+  margin-bottom: 5%;
+}
+
+.buttons_general {
+  margin-bottom: 5%;
 }
 
 .text_form {
@@ -121,16 +129,6 @@
   border-radius: 5px;
 }
 
-#footerHomepage {
-  background-color: transparent;
-  color: black;
-  font-weight: bold;
-  font-size: 20px;
-  font-family: "Times New Roman";
-  text-align: center;
-  margin-top: 6%;
-}
-
 .imgFooter {
-  width: 1.5%;
+  padding: 5px;
 }

@@ -10,23 +10,9 @@ Relatório Fácil | Login
 <div class="container-fluid">
 
     <div class="row">
-        <div class="col-md-3 sidebar">
-            <div class="logo_sidebar">
 
-                <h2 class="logo">
-                    <img class="img_logo_sidebar" src="{% static 'autenticacao/media/logo_01.png' %}">
-                </h2>
-                <div class="footerHomepage">
-                    <p>Desenvolvido por: Ramon Gonçalves</p>
-                    <a href="https://www.linkedin.com/in/ramon-gon%C3%A7alves-a900bb190/" target="_blank"><img class="imgFooter" src="{% static 'autenticacao/media/img_linkedin_01.png' %}" alt="Foto: Github"></a>
-                    <a href="https://github.com/RamonTadeuGoncalves" target="_blank"><img class="imgFooter" src="{% static 'autenticacao/media/img_github_01.png' %}" alt="Foto: LinkedIn"></a>
-                </div>
-
-            </div>
-        </div>
-
-        <div class="col-md-9">
-            <div class="area_cadastrar">
+        <div class="col-md">
+            <div class="area_cadastrar sidebar">
                 {% if messages %}
                 <br>
                 {% for message in messages %}

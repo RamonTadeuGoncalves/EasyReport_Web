@@ -46,9 +46,29 @@
   {% endblock %}
 </body>
 
-<footer id="footerHomepage">
-  <p>Ramon Gonçalves <a href="https://www.linkedin.com/in/ramon-gon%C3%A7alves-a900bb190/" target="_blank"><img class="imgFooter" src="{% static 'plataforma/media/img_linkedin_01.png' %}" alt="Foto: LinkedIn"></a> <a href="https://github.com/RamonTadeuGoncalves" target="_blank"><img class="imgFooter" src="{% static 'plataforma/media/img_github_01.png' %}" alt="Foto: Github"></a></p>
+<div class="container">
+  <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4 border-top">
+    <div class="col-md-5 d-flex align-items-center">
+      Desenvolvido com muito esforço por Ramon Gonçalves
+    </div>
+    <div class="nav col-md-4 justify-content-end list-unstyled d-flex">
+      <li class="ms-3">
+        <a class="text-muted" href="https://www.linkedin.com/in/ramon-gon%C3%A7alves-a900bb190/">
+          <div class="imgFooter">
+            <img class="bi" height="24" width="24" src="{% static 'plataforma/media/img_linkedin_01.png' %}" alt="Foto: Github">
+          </div>
 
-</footer>
+        </a>
+      </li>
+      <li class="ms-3">
+        <a class="text-muted" href="https://github.com/RamonTadeuGoncalves">
+          <div class="imgFooter">
+            <img class="bi" height="24" width="24" src="{% static 'plataforma/media/img_github_01.png' %}" alt="Foto: LinkedIn">
+          </div>
+        </a>
+      </li>
+    </div>
+  </footer>
+</div>
 
 </html>
