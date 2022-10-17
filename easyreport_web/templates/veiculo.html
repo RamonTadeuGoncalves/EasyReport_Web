@@ -1,37 +1,53 @@
-{% extends 'base.html' %}
+{% extends 'base_plataforma.html' %}
 {% block title%}
-Detalhes Veículo
+Relatório Fácil | Detalhes Veículo
 {% endblock%}
 {% block pagecontent%}
+{% load crispy_forms_tags %}
 {% load static %}
-<div id="tituloPaginas">
-    <p>DETALHES DO CADASTRO.</p>
-</div>
+<div class="container-fluid">
+    <div class="area_cadastrar">
+        <h2 class="titulo">Detalhes do Cadastro</h2>
+        <hr>
+        <div class="containerDetalhesCadastro">
 
-<div class="containerDetalhesCadastro">
+            <h1 id="tituloDetalhes">{{ item.veicModelo }}</h1>
 
-    <h1 id="tituloDetalhes">{{ item.veicModelo }}</h1>
-
-    <div class="form-row">
-        <div class="form-group col-lg-4">
-            <div class="detalhesTitulacaoEndereco">
-                <h5>Registro: {{item.veicRegistro}}</h5>
-                <h5>Placa: {{item.veicPlaca}}</h5>
-                <h5>Modelo: {{item.veicModelo}}</h5>
-                <h5>Fabricante: {{item.veicFabricante}}</h5>
-                <h5>Ano: {{item.veicAno}}</h5>
-                <h5>Cor: {{item.veicCor}}</h5>
-                <h5>Renavam: {{item.veicRenavam}}</h5>
+            <div class="form-row">
+                <div class="form-group col-lg-4">
+                    <div class="detalhes_Matricula">
+                        <h5 class="item_detalhe">Registro: {{item.veicRegistro}}</h5>
+                        <h5 class="item_detalhe">Placa: {{item.veicPlaca}}</h5>
+                        <h5 class="item_detalhe">Renavam: {{item.veicRenavam}}</h5>
+                    </div>
+                </div>
+                <div class="form-group col-lg-4">
+                    <div class="detalhes_Matricula">
+                        <h5 class="item_detalhe">Modelo: {{item.veicModelo}}</h5>
+                        <h5 class="item_detalhe">Fabricante: {{item.veicFabricante}}</h5>
+                    </div>
+                </div>
+                <div class="form-group col-lg-4">
+                    <div class="detalhes_Matricula">
+                        <h5 class="item_detalhe">Ano: {{item.veicAno}}</h5>
+                        <h5 class="item_detalhe">Cor: {{item.veicCor}}</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row botoes">
+                        <div class="col-lg buttons_general">
+                            <a class="btn btn-outline-success btn-lg" href="/listar_veiculo/">Voltar</a>
+                        </div>
+                        <div class="col-lg buttons_general">
+                            <a class="btn btn-outline-danger btn-lg" href="/excluir_veiculo/{{item.pk}}/">Excluir</a>
+                        </div>
+                        <div class="col-lg buttons_general">
+                            <a class="btn btn-outline-warning btn-lg" href="/editar_veiculo/{{item.pk}}/">Editar</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="botoes">
-        <a class="btn btn-primary" href="/listar_veiculo/">Voltar</a>
-        <a class="btn btn-secondary" href="/excluir_veiculo/{{item.pk}}/">Excluir</a>
-        <a class="btn btn-primary" href="/editar_veiculo/{{item.pk}}/">Editar</a>
-    </div>
-
 </div>
-
 {% endblock %}

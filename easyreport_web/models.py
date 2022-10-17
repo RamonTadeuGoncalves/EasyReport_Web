@@ -152,8 +152,6 @@ class OrdemDeServico(models.Model):
     osTipoServico = models.ForeignKey(TipoServico, on_delete=models.CASCADE)
     osDataAbertura = models.DateField(auto_now=True)
     osDescricao = models.CharField(max_length=200)
-    # osObservacao = models.CharField(max_length=200, null=True, blank=True)
-    # osOutros = models.CharField(max_length=100, null=True, blank=True)
 
     class Meta:
         db_table = 'OrdemDeServico'
@@ -173,12 +171,11 @@ class RelatorioDeServico(models.Model):
     relatorioContatoCliente = models.CharField(max_length=50)
     relatorioSetorClicente = models.CharField(max_length=50)
     relatorioData = models.DateField(auto_now=True)
-    # relatorioEstado = models.BooleanField(False)
-    relatorioObservacao = models.CharField(max_length=200, null=True, blank=True)
+    # relatorioObservacao = models.CharField(max_length=200, null=True, blank=True)
     # relatorioFoto = models.FileField(null=True, blank=True)
-    relatorioComentarioCliente = models.CharField(max_length=200, null=True, blank=True)
-    relatorioOutros = models.CharField(max_length=100, null=True, blank=True)
-    relatorioTipoServico = models.BigIntegerField(null=False)
+    # relatorioComentarioCliente = models.CharField(max_length=200, null=True, blank=True)
+    # relatorioOutros = models.CharField(max_length=100, null=True, blank=True)
+    relatorioTipoServico = models.ForeignKey(TipoServico, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'RelatorioDeServico'

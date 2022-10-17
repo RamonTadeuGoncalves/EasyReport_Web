@@ -40,7 +40,7 @@ class OSSerializer(serializers.ModelSerializer):
     class Meta:
         model = OrdemDeServico
         fields = (
-            'osNumero', 'osFuncRegistro', 'osClienteRegistro', 'osVeicRegistro', 'osDataAbertura', 'osDescricao', 'osObservacao', 'osTipoServico', 'osOutros'
+            'osNumero', 'osFuncRegistro', 'osClienteRegistro', 'osVeicRegistro', 'osDataAbertura', 'osDescricao', 'osTipoServico'
         )
 
 class RelatorioDeServicoSerializer(serializers.ModelSerializer):
@@ -50,8 +50,7 @@ class RelatorioDeServicoSerializer(serializers.ModelSerializer):
         fields = (
             'relatorioNumero', 'relatorioOsNumero', 'relatorioFuncRegistro', 'relatorioClienteRegistro',
             'relatorioDescricao', 'relatorioContatoCliente', 'relatorioSetorClicente',
-            'relatorioData', 'relatorioObservacao', 'relatorioComentarioCliente',
-            'relatorioOutros', 'relatorioTipoServico'
+            'relatorioData', 'relatorioTipoServico'
         )
 
 class TipoServicoSerializer(serializers.ModelSerializer):

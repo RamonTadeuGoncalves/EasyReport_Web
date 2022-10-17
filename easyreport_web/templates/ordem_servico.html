@@ -1,37 +1,52 @@
-{% extends 'base.html' %}
+{% extends 'base_plataforma.html' %}
 {% block title%}
-Detalhes Ordem de Serviço
+Relatório Fácil | Ordem de Serviço
 {% endblock%}
 {% block pagecontent%}
+{% load crispy_forms_tags %}
 {% load static %}
-<div id="tituloPaginas">
-    <p>DETALHES DO CADASTRO.</p>
-</div>
+<div class="container-fluid">
+    <div class="area_cadastrar">
+        <h2 class="titulo">Detalhes do Cadastro</h2>
+        <hr>
+        <div class="containerDetalhesCadastro">
 
-<div class="containerDetalhesCadastro">
+            <h1 id="tituloDetalhes">N. {{ item.osNumero }}</h1>
 
-    <h1 id="tituloDetalhes">O.S. Número: {{ item.osNumero }}</h1>
-
-    <div class="form-row">
-        <div class="form-group col-lg-4">
-            <div class="detalhesTitulacaoEndereco">
-                <h5>Funcionario: {{item.osFuncRegistro}}</h5>
-                <h5>Cliente: {{item.osClienteRegistro}}</h5>
-                <h5>Veículo: {{item.osVeicRegistro}}</h5>
-                <h5>Data Abertura: {{item.osDataAbertura}}</h5>
-                <h5>Descrição: {{item.osDescricao}}</h5>
-                <h5>Observação: {{item.osObservacao}}</h5>
-                <h5>Tipo de Serviço: {{item.osTipoServico}}</h5>
+            <div class="form-row">
+                <div class="form-group col-lg-4">
+                    <div class="detalhes_Matricula">
+                        <h5 class="item_detalhe">Funcionario: {{item.osFuncRegistro}}</h5>
+                        <h5 class="item_detalhe">Cliente: {{item.osClienteRegistro}}</h5>
+                        <h5 class="item_detalhe">Veículo: {{item.osVeicRegistro}}</h5>
+                    </div>
+                </div>
+                <div class="form-group col-lg-4">
+                    <div class="detalhes_Matricula">
+                        <h5 class="item_detalhe">Tipo de Serviço: {{item.osTipoServico}}</h5>
+                        <h5 class="item_detalhe">Descrição: {{item.osDescricao}}</h5>
+                    </div>
+                </div>
+                <div class="form-group col-lg-4">
+                    <div class="detalhes_Matricula">
+                        <h5 class="item_detalhe">Data Abertura: {{item.osDataAbertura}}</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row botoes">
+                        <div class="col-lg buttons_general">
+                            <a class="btn btn-outline-success btn-lg" href="/listar_os/">Voltar</a>
+                        </div>
+                        <div class="col-lg buttons_general">
+                            <a class="btn btn-outline-danger btn-lg" href="/excluir_os/{{item.pk}}/">Excluir</a>
+                        </div>
+                        <div class="col-lg buttons_general">
+                            <a class="btn btn-outline-warning btn-lg" href="/editar_os/{{item.pk}}/">Editar</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="botoes">
-        <a class="btn btn-primary" href="/listar_os/">Voltar</a>
-        <a class="btn btn-secondary" href="/excluir_os/{{item.pk}}/">Excluir</a>
-        <a class="btn btn-primary" href="/editar_os/{{item.pk}}/">Editar</a>
-    </div>
-
 </div>
-
 {% endblock %}

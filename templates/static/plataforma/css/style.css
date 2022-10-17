@@ -132,3 +132,33 @@
 .imgFooter {
   padding: 5px;
 }
+
+.containerDetalhesCadastro {
+  border-radius: 5px;
+  background-color: rgb(245, 244, 244);
+  padding: 2%;
+  margin-left: 15%;
+  margin-right: 15%;
+  margin-top: 2%;
+  margin-bottom: 2%;
+  float: center;
+}
+
+#tituloDetalhes {
+  font-size: 50px;
+  margin-bottom: 5%;
+}
+
+.detalhes_Matricula {
+  float: left;
+}
+
+.item_detalhe {
+  margin-bottom: 7%;
+}
+
+.botoes {
+  float: right;
+  margin-left: 60%;
+  /* padding: 2%; */
+}

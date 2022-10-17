@@ -5,14 +5,14 @@ Relatório Fácil | Login
 {% block pagecontent%}
 {% load static %}
 {% block header %}
-<link rel="stylesheet" href="{% static 'autenticacao/css/style.css'%}">
+<!-- <link rel="stylesheet" href="{% static 'autenticacao/css/style.css'%}"> -->
 {% endblock %}
 <div class="container-fluid">
 
     <div class="row">
 
         <div class="col-md">
-            <div class="area_cadastrar sidebar">
+            <div class="area_cadastrar ">
                 {% if messages %}
                 <br>
                 {% for message in messages %}

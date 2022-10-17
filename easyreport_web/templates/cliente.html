@@ -1,50 +1,59 @@
-{% extends 'base.html' %}
+{% extends 'base_plataforma.html' %}
 {% block title%}
-Detalhes Cliente
+Relatório Fácil | Detalhes Cliente
 {% endblock%}
 {% block pagecontent%}
+{% load crispy_forms_tags %}
 {% load static %}
-<div id="tituloPaginas">
-    <p>DETALHES DO CADASTRO.</p>
-</div>
+<div class="container-fluid">
+    <div class="area_cadastrar">
+        <h2 class="titulo">Detalhes do Cadastro</h2>
+        <hr>
+        <div class="containerDetalhesCadastro">
 
-<div class="containerDetalhesCadastro">
+            <h1 id="tituloDetalhes">{{ item.clienteNome }}</h1>
 
-    <h1 id="tituloDetalhes">{{ item.clienteNome }}</h1>
-
-    <div class="form-row">
-        <div class="form-group col-lg-4">
-            <div class="detalhesTitulacaoEndereco">
-                <h5>Rua: {{item.clienteEnderecoRua}}</h5>
-                <h5>Número: {{item.clienteEnderecoNumero}}</h5>
-                <h5>Complemento: {{item.clienteEnderecoComplemento}}</h5>
-                <h5>Cidade: {{item.clienteEnderecoCidade}}</h5>
-                <h5>Estado: {{item.clienteEnderecoEstado}}</h5>
-                <h5>CEP: {{item.clienteEnderecoCep}}</h5>
-            </div>
-        </div>
-        <div class="form-group col-lg-4">
-            <div class="detalhesTitulacaoEndereco">
-                <h5>Telefone: {{item.clienteTelefone}}</h5>
-                <h5>E-mail: {{item.clienteEmail}}</h5>
-                <h5>Representante: {{item.clienteRepresentante}}</h5>
-                <h5>Segmento: {{item.clienteSegmento}}</h5>
-            </div>
-        </div>
-        <div class="form-group col-lg-7">
-            <div class="detalhesMatriculaTelefone">
-                <h5>Registro: {{ item.clienteRegistro }}</h5>
-                <h5>CNPJ: {{item.clienteCnpj}}</h5>
-                <h5>Razão Social: {{item.clienteRazaoSocial}}</h5>
+            <div class="form-row">
+                <div class="form-group col-lg-4">
+                    <div class="detalhes_Matricula">
+                        <h5 class="item_detalhe">Registro: {{ item.clienteRegistro }}</h5>
+                        <h5 class="item_detalhe">CNPJ: {{item.clienteCnpj}}</h5>
+                        <h5 class="item_detalhe">Razão Social: {{item.clienteRazaoSocial}}</h5>
+                        <h5 class="item_detalhe">Segmento: {{item.clienteSegmento}}</h5>
+                    </div>
+                </div>
+                <div class="form-group col-lg-4">
+                    <div class="detalhes_Matricula">
+                        <h5 class="item_detalhe">Rua: {{item.clienteEnderecoRua}}</h5>
+                        <h5 class="item_detalhe">Número: {{item.clienteEnderecoNumero}}</h5>
+                        <h5 class="item_detalhe">Complemento: {{item.clienteEnderecoComplemento}}</h5>
+                        <h5 class="item_detalhe">Cidade: {{item.clienteEnderecoCidade}}</h5>
+                        <h5 class="item_detalhe">Estado: {{item.clienteEnderecoEstado}}</h5>
+                        <h5 class="item_detalhe">CEP: {{item.clienteEnderecoCep}}</h5>
+                    </div>
+                </div>
+                <div class="form-group col-lg-4">
+                    <div class="detalhes_Matricula">
+                        <h5 class="item_detalhe">Telefone: {{item.clienteTelefone}}</h5>
+                        <h5 class="item_detalhe">E-mail: {{item.clienteEmail}}</h5>
+                        <h5 class="item_detalhe">Representante: {{item.clienteRepresentante}}</h5>
+                    </div>
+                </div>
+                <div class="col">
+                    <div class="row botoes">
+                        <div class="col-lg buttons_general">
+                            <a class="btn btn-outline-success btn-lg" href="/listar_cliente/">Voltar</a>
+                        </div>
+                        <div class="col-lg buttons_general">
+                            <a class="btn btn-outline-danger btn-lg" href="/excluir_cliente/{{item.pk}}/">Excluir</a>
+                        </div>
+                        <div class="col-lg buttons_general">
+                            <a class="btn btn-outline-warning btn-lg" href="/editar_cliente/{{item.pk}}/">Editar</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-
-    <div class="botoes">
-        <a class="btn btn-primary" href="/listar_cliente/">Voltar</a>
-        <a class="btn btn-secondary" href="/excluir_cliente/{{item.pk}}/">Excluir</a>
-        <a class="btn btn-primary" href="/editar_cliente/{{item.pk}}/">Editar</a>
-    </div>
-
 </div>
 {% endblock %}
