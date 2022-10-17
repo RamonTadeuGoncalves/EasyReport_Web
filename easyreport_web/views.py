@@ -89,6 +89,7 @@ def editar_funcionario(request, nr_item):
             item = form.save(commit=False)
             item.funcCpf = form.cleaned_data['funcCpf']
             item.funcNome = form.cleaned_data['funcNome']
+            item.funcSobrenome = form.cleaned_data['funcSobrenome']
             item.funcEnderecoRua = form.cleaned_data['funcEnderecoRua']
             item.funcEnderecoNumero = form.cleaned_data['funcEnderecoNumero']
             item.funcEnderecoComplemento = form.cleaned_data['funcEnderecoComplemento']
@@ -96,7 +97,6 @@ def editar_funcionario(request, nr_item):
             item.funcEnderecoCep = form.cleaned_data['funcEnderecoCep']
             item.funcTelefone = form.cleaned_data['funcTelefone']
             item.funcEmail = form.cleaned_data['funcEmail']
-            item.funcSenha = form.cleaned_data['funcSenha']
             item.funcFuncao = form.cleaned_data['funcFuncao']
             item.funcDpto = form.cleaned_data['funcDpto']
             item.funcCnh = form.cleaned_data['funcCnh']
@@ -108,7 +108,7 @@ def editar_funcionario(request, nr_item):
             return render(request, 'atualizado.html', {})
         
         else:
-            return render(request, 'cadastrar_funcionario.html', {'form':form, 'item': item})
+            return render(request, 'cadastro.html', {'form':form, 'item': item})
     
     elif (request.method == 'GET'):
         return render(request, 'editar_funcionario.html', {'form':form, 'item': item})

@@ -1,101 +1,108 @@
-{% extends 'base.html' %}
+{% extends 'base_plataforma.html' %}
 {% block title%}
-Editar Funcionário
+Relatório Fácil | Editar Funcionário
 {% endblock%}
 {% block pagecontent%}
 {% load crispy_forms_tags %}
 {% load static %}
-<div id="tituloPaginas">
-    <p>EDITAR DADOS DO CADASTRO.</p>
-</div>
+<div class="container-fluid">
+    <div class="area_cadastrar">
+        <h2 class="titulo">Editar Funcionário</h2>
+        <hr>
+        <form class="form_cadastro" action="" method="POST">
+            {% csrf_token %}
 
-<div class="containerFormulario">
+            <div class="row">
+                <div class="col-lg-5 text_form">
+                    {{ form.funcCpf|as_crispy_field }}
+                </div>
+            </div>
 
-    <form action="" method="POST">
-        {% csrf_token %}
-        <div class="row">
-                        <div class="col-75">
-                            {{ form.funcCpf|as_crispy_field }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-75">
-                            {{ form.funcNome|as_crispy_field }}
-                        </div>
-                        <div class="col-75">
-                            {{ form.funcSobrenome|as_crispy_field }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-75">
-                            {{ form.funcEnderecoRua|as_crispy_field }}
-                        </div>
-                        <div class="col-75">
-                            {{ form.funcEnderecoNumero|as_crispy_field }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-75">
-                            {{ form.funcEnderecoComplemento|as_crispy_field }}
-                        </div>
-                        <div class="col-75">
-                            {{ form.funcEnderecoCidade|as_crispy_field }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-75">
-                            {{ form.funcEnderecoCep|as_crispy_field }}
-                        </div>
-                        <div class="col-75">
-                            {{ form.funcTelefone|as_crispy_field }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-75">
-                            {{ form.funcEnderecoEstado|as_crispy_field }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-75">
-                            {{ form.funcEmail|as_crispy_field }}
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.funcNome|as_crispy_field }}
+                </div>
+                <div class="col-lg text_form">
+                    {{ form.funcSobrenome|as_crispy_field }}
+                </div>
+            </div>
+            <br>
 
-                    <div class="row">
-                        <div class="col-75">
-                            {{ form.funcCnh|as_crispy_field }}
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-75">
-                            {{ form.funcFuncao|as_crispy_field }}
-                        </div>
-                        <div class="col-75">
-                            {{ form.funcDpto|as_crispy_field }}
-                        </div>
-                    </div>
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.funcEnderecoRua|as_crispy_field }}
+                </div>
+            </div>
 
-                    <div class="row">
-                        <div class="col-75">
-                            {{ form.funcTipoCadastro|as_crispy_field }}
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                        <button  type="submit" class="btn btn-primary">Salvar</button>
-                        <a class="btn btn-secondary" href="/listar_funcionario/">Cancelar</a>
-                        <p id="formularioBotao">*Campos Obrigatórios.</p>
-                    </div>
-                    <br>
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.funcEnderecoNumero|as_crispy_field }}
+                </div>
+                <div class="col-lg text_form">
+                    {{ form.funcEnderecoCep|as_crispy_field }}
+                </div>
+            </div>
 
-                    {% if messages %}
-                    <br>
-                    {% for message in messages %}
-                    <div class="alert {{message.tags}}">
-                        {{message}}
+            <div class="row">
+
+                <div class="col-lg text_form">
+                    {{ form.funcEnderecoCidade|as_crispy_field }}
+                </div>
+                <div class="col-lg-4 text_form">
+                    {{ form.funcEnderecoEstado|as_crispy_field }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.funcEnderecoComplemento|as_crispy_field }}
+                </div>
+            </div>
+            <br>
+
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.funcTelefone|as_crispy_field }}
+                </div>
+                <div class="col-lg text_form">
+                    {{ form.funcEmail|as_crispy_field }}
+                </div>
+                <div class="col-lg text_form">
+                    {{ form.funcCnh|as_crispy_field }}
+                </div>
+            </div>
+            <br>
+
+
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.funcFuncao|as_crispy_field }}
+                </div>
+                <div class="col-lg text_form">
+                    {{ form.funcDpto|as_crispy_field }}
+                </div>
+                <div class="col-lg text_form">
+                    {{ form.funcTipoCadastro|as_crispy_field }}
+                </div>
+            </div>
+
+            <div>
+                <p id="formularioBotao">*Campos Obrigatórios.</p>
+            </div>
+
+            <div>
+                <div class="row">
+                    <div class="col-lg-9"></div>
+                    <div class="col-lg buttons_general ">
+                        <button type="submit" class="btn btn-outline-success btn-lg">Salvar</button>
                     </div>
-                    {% endfor %}
-                    {% endif %}
-    </form>
+                    <div class="col-lg buttons_general ">
+                        <a class="btn btn-outline-secondary btn-lg" href="/listar_funcionario/">Cancelar</a>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
 </div>
 {% endblock %}

@@ -1,76 +1,98 @@
-{% extends 'base.html' %}
+{% extends 'base_plataforma.html' %}
 {% block title%}
-Editar Cliente
+Relatório Fácil | Editar Cliente
 {% endblock%}
 {% block pagecontent%}
 {% load crispy_forms_tags %}
 {% load static %}
-<div id="tituloPaginas">
-    <p>EDITAR DADOS DO CADASTRO.</p>
-</div>
+<div class="container-fluid">
+    <div class="area_cadastrar">
+        <h2 class="titulo">Editar Cliente</h2>
+        <hr>
+        <form class="form_cadastro" action="" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-5 text_form">
+                    {{ form.clienteCnpj|as_crispy_field }}
+                </div>
+            </div>
 
-<div class="containerFormulario">
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.clienteRazaoSocial|as_crispy_field }}
+                </div>
+                <div class="col-lg text_form">
+                    {{ form.clienteNome|as_crispy_field }}
+                </div>
+            </div>
+            <br>
 
-    <form action="" method="POST">
-        {% csrf_token %}
-        <div class="row">
-            <div class="col-75">
-                {{ form.clienteCnpj|as_crispy_field }}
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.clienteEnderecoRua|as_crispy_field }}
+                </div>
             </div>
-            <div class="col-75">
-                {{ form.clienteNome|as_crispy_field }}
+
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.clienteEnderecoNumero|as_crispy_field }}
+                </div>
+
+                <div class="col-lg text_form">
+                    {{ form.clienteEnderecoCep|as_crispy_field }}
+                </div>
+
             </div>
-        </div>
-        <div class="row">
-            <div class="col-75">
-                {{ form.clienteRazaoSocial|as_crispy_field }}
+
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.clienteEnderecoCidade|as_crispy_field }}
+                </div>
+                <div class="col-lg text_form">
+                    {{ form.clienteEnderecoEstado|as_crispy_field }}
+                </div>
             </div>
-            <div class="col-75">
-                {{ form.clienteEnderecoRua|as_crispy_field }}
+
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.clienteEnderecoComplemento|as_crispy_field }}
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-75">
-                {{ form.clienteEnderecoNumero|as_crispy_field }}
+            <br>
+
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.clienteTelefone|as_crispy_field }}
+                </div>
+                <div class="col-lg text_form">
+                    {{ form.clienteEmail|as_crispy_field }}
+                </div>
             </div>
-            <div class="col-75">
-                {{ form.clienteEnderecoComplemento|as_crispy_field }}
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.clienteRepresentante|as_crispy_field }}
+                </div>
+                <div class="col-lg text_form">
+                    {{ form.clienteSegmento|as_crispy_field }}
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-75">
-                {{ form.clienteEnderecoCidade|as_crispy_field }}
+            <div>
+                <p id="formularioBotao">*Campos Obrigatórios.</p>
             </div>
-            <div class="col-75">
-                {{ form.clienteEnderecoCep|as_crispy_field }}
+
+            <div>
+                <div class="row">
+                    <div class="col-lg-9"></div>
+                    <div class="col-lg buttons_general ">
+                        <button type="submit" class="btn btn-outline-success btn-lg">Salvar</button>
+                    </div>
+                    <div class="col-lg buttons_general ">
+                        <a class="btn btn-outline-secondary btn-lg" href="/listar_cliente/">Cancelar</a>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-75">
-                {{ form.clienteTelefone|as_crispy_field }}
-            </div>
-            <div class="col-75">
-                {{ form.clienteEmail|as_crispy_field }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-75">
-                {{ form.clienteRepresentante|as_crispy_field }}
-            </div>
-            <div class="col-75">
-                {{ form.clienteSegmento|as_crispy_field }}
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-75">
-                {{ form.clienteEnderecoEstado|as_crispy_field }}
-            </div>
-        </div>
-        <div class="row">
-            <button type="submit" class="btn btn-primary">Salvar</button>
-            <a class="btn btn-secondary" href="/listar_cliente/">Cancelar</a>
-            <p >*Campos Obrigatórios.</p>
-        </div>
-    </form>
+
+        </form>
+    </div>
 </div>
 {% endblock %}

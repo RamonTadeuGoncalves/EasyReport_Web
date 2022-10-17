@@ -5,13 +5,10 @@ Relatório Fácil | Cadastrar Funcionário
 {% block pagecontent%}
 {% load crispy_forms_tags %}
 {% load static %}
-
 <div class="container-fluid">
-
     <div class="area_cadastrar">
         <h2 class="titulo">Cadastro de Funcionários</h2>
         <hr>
-
         <form class="form_cadastro" action="{% url 'cadastro' %}" method="POST">
             {% csrf_token %}
 

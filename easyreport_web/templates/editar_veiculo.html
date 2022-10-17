@@ -1,47 +1,63 @@
-{% extends 'base.html' %}
+{% extends 'base_plataforma.html' %}
 {% block title%}
-Editar Veículo
+Relatório Fácil | Editar Veículo
 {% endblock%}
 {% block pagecontent%}
 {% load crispy_forms_tags %}
 {% load static %}
-<div id="tituloPaginas">
-    <p>EDITAR DADOS DO CADASTRO.</p>
-</div>
+<div class="container-fluid">
+    <div class="area_cadastrar">
+        <h2 class="titulo">Editar Veículo</h2>
+        <hr>
+        <form class="form_cadastro" action="" method="POST">
+            {% csrf_token %}
+            <div class="row">
+                <div class="col-lg-5 text_form">
+                    {{ form.veicRenavam|as_crispy_field }}
+                </div>
+            </div>
 
-<div class="containerFormulario">
+            <div class="row">
+                <div class="col-lg-5 text_form">
+                    {{ form.veicPlaca|as_crispy_field }}
+                </div>
+            </div>
 
-    <form action="" method="POST">
-        {% csrf_token %}
-        <div class="row">
-            <div class="col-75">
-                {{ form.veicPlaca|as_crispy_field }}
+            <div class="row">
+                <div class="col-lg text_form">
+                    {{ form.veicFabricante|as_crispy_field }}
+                </div>
+                <div class="col-lg text_form">
+                    {{ form.veicModelo|as_crispy_field }}
+                </div>
             </div>
-            <div class="col-75">
-                {{ form.veicModelo|as_crispy_field }}
+
+            <div class="row">
+                <div class="col-lg-5 text_form">
+                    {{ form.veicAno|as_crispy_field }}
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-75">
-                {{ form.veicFabricante|as_crispy_field }}
+            <div class="row">
+                <div class="col-lg-5 text_form">
+                    {{ form.veicCor|as_crispy_field }}
+                </div>
             </div>
-            <div class="col-75">
-                {{ form.veicAno|as_crispy_field }}
+            <div>
+                <p id="formularioBotao">*Campos Obrigatórios.</p>
             </div>
-        </div>
-        <div class="row">
-            <div class="col-75">
-                {{ form.veicCor|as_crispy_field }}
+
+            <div>
+                <div class="row">
+                    <div class="col-lg-9"></div>
+                    <div class="col-lg buttons_general ">
+                        <button type="submit" class="btn btn-outline-success btn-lg">Salvar</button>
+                    </div>
+                    <div class="col-lg buttons_general ">
+                        <a class="btn btn-outline-secondary btn-lg" href="/listar_veiculo/">Cancelar</a>
+                    </div>
+                </div>
             </div>
-            <div class="col-75">
-                {{ form.veicRenavam|as_crispy_field }}
-            </div>
-        </div>
-        <div class="row">
-            <button type="submit" class="btn btn-primary">Salvar</button>
-            <a class="btn btn-secondary" href="/listar_veiculo/">Cancelar</a>
-            <p >*Campos Obrigatórios.</p>
-        </div>
-    </form>
+        </form>
+    </div>
 </div>
 {% endblock %}
