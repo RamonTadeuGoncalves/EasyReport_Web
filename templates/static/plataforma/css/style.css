@@ -158,7 +158,17 @@
 }
 
 .botoes {
-  float: right;
-  margin-left: 60%;
-  /* padding: 2%; */
+  margin: auto;
+  resize: both;
+}
+
+.imgFormularioSalvo {
+  margin: auto;
+  /* float: right; */
+  /* margin-left: 5%; */
+  /* margin-right: 5%; */
+  /* margin-left: 5%; */
+  /* float: left; */
+  width: 200px;
+  resize: both;
 }

@@ -1,23 +1,27 @@
-{% extends 'base.html' %}
+{% extends 'base_plataforma.html' %}
 {% block title%}
-Cadastro Salvo
+Relatório Fácil | Cadastro Salvo
 {% endblock%}
 {% block pagecontent%}
+{% load crispy_forms_tags %}
 {% load static %}
-<div id="tituloPaginas">
-    <p>CADASTRO REALIZADO COM SUCESSO!</p>
-</div>
-
-<div class="containerformularioSalvo">
-
-    <div class="row">
-        <img class="imgFormularioSalvo" src="{% static 'media/img_salvo_01.png' %}">
+<div class="container-fluid">
+    <div class="area_cadastrar">
+        <h2 class="titulo">Cadastro Criado com sucesso!!!</h2>
+        <hr>
+        <div class="containerDetalhesCadastro">
+            <div class="row">
+                <img class="imgFormularioSalvo" src="{% static 'plataforma/media/img_salvo_01.png' %}">
+            </div>
+            <div class="form-row">
+                <div class="form-group col-lg-4"></div>
+            </div>
+            <div class="row">
+                <div class="buttons_general botoes">
+                    <a class="btn btn-outline-secondary btn-lg" href="/index/">Início</a>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="row">
-        <a id="formularioVoltar" class="btn btn-primary" href="/index/">OK</a>
-    </div>
-    <div class="formularioVoltar">
-    </div>
-
 </div>
 {% endblock %}

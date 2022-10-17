@@ -44,33 +44,33 @@ def logout_user(request):
     return redirect('/')
 
 #FUNCIONARIO
-def cadastrar_funcionario(request):
-    if request.method == 'POST':
-        form = FuncionarioForm(request.POST)
-        if form.is_valid():
-            form.save()
+# def cadastrar_funcionario(request):
+#     if request.method == 'POST':
+#         form = FuncionarioForm(request.POST)
+#         if form.is_valid():
+#             form.save()
 
-            lista_itens = Funcionario.objects.order_by('-funcRegistro')[0]
-            usuario = lista_itens.funcNome            
-            e_mail = lista_itens.funcEmail
-            passwd = lista_itens.funcSenha
-            cadastro = lista_itens.funcTipoCadastro    
+#             lista_itens = Funcionario.objects.order_by('-funcRegistro')[0]
+#             usuario = lista_itens.funcNome            
+#             e_mail = lista_itens.funcEmail
+#             passwd = lista_itens.funcSenha
+#             cadastro = lista_itens.funcTipoCadastro    
             
-            if cadastro == 'Funcionario':
-                User.objects.create_user(
-                    username=str(usuario), email = str(e_mail), password = str(passwd)
-                )
-            else:
-                User.objects.create_superuser(
-                    username=str(usuario), email = str(e_mail), password = str(passwd)
-                )
+#             if cadastro == 'Funcionario':
+#                 User.objects.create_user(
+#                     username=str(usuario), email = str(e_mail), password = str(passwd)
+#                 )
+#             else:
+#                 User.objects.create_superuser(
+#                     username=str(usuario), email = str(e_mail), password = str(passwd)
+#                 )
                 
-            return render(request, 'salvo.html', {})
+#             return render(request, 'salvo.html', {})
     
-    else:
-        form = FuncionarioForm()
+#     else:
+#         form = FuncionarioForm()
     
-    return render(request, 'cadastrar_funcionario.html', {'form':form})
+#     return render(request, 'cadastrar_funcionario.html', {'form':form})
 
 def listar_funcionario(request):
     lista_itens = Funcionario.objects.all()
@@ -321,7 +321,6 @@ def editar_tipo_servico(request, nr_item):
         form = TipoServicoForm(request.POST, instance=item)
         if form.is_valid():
             item = form.save(commit=False)
-            item.servRegistro = form.cleaned_data['servRegistro']
             item.servDescricao = form.cleaned_data['servDescricao']
 
             item.save()

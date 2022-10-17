@@ -66,9 +66,9 @@ def cadastro(request):
                     email_html(path_template, 'Cadastro confirmado', [e_mail, ], username=usuario, password=passwd,
                                link_ativacao=f"127.0.0.1:8000/auth/ativar_conta/{token}")
 
-                    messages.add_message(request, constants.SUCCESS, 'Usuário cadastrado com sucesso.')
+                    # messages.add_message(request, constants.SUCCESS, 'Usuário cadastrado com sucesso.')
 
-                    return redirect('/index/')
+                    return render(request, 'salvo.html', {})
                 except:
                     messages.add_message(request, constants.ERROR, 'Erro interno do sistema.')
                     return render(request, 'cadastro.html', {'form': form})
@@ -90,8 +90,8 @@ def cadastro(request):
                     email_html(path_template, 'Cadastro confirmado', [e_mail, ], username=usuario, password=passwd,
                                link_ativacao=f"127.0.0.1:8000/auth/ativar_conta/{token}")
 
-                    messages.add_message(request, constants.SUCCESS, 'Usuário cadastrado com sucesso.')
-                    return redirect('/index/')
+                    # messages.add_message(request, constants.SUCCESS, 'Usuário cadastrado com sucesso.')
+                    return render(request, 'salvo.html', {})
                 except:
                     messages.add_message(request, constants.ERROR, 'Erro interno do sistema.')
                     return render(request, 'cadastro.html', {'form': form})
