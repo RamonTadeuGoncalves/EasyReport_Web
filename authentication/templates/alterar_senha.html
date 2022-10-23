@@ -1,28 +1,16 @@
 {% extends 'base.html' %}
-{% block title%}
-Pet Lab | Login
-{% endblock%}
+{% block title %}
+Relatório Fácil | Alterar Senha
+{% endblock %}
 {% block pagecontent%}
 {% load static %}
 {% block header %}
-<link rel="stylesheet" href="{% static 'autenticacao/css/style.css'%}">
 {% endblock %}
 <div class="container-fluid">
 
     <div class="row">
-        <div class="col-md-3 sidebar">
-            <div class="logo_sidebar">
 
-                <h2 class="logo">
-                    <img class="img_logo_sidebar" src="{% static 'autenticacao/img/logo_pet_lab.png' %}">
-                </h2>
-
-            </div>
-
-
-        </div>
-
-        <div class="col-md-9">
+        <div class="col-md">
             <div class="area_cadastrar">
                 {% if messages %}
                 <br>
@@ -32,7 +20,7 @@ Pet Lab | Login
                 </div>
                 {% endfor %}
                 {% endif %}
-                <h2 class="titulo">Ola, </h2>
+                <h2 class="titulo">Olá, </h2>
                 <p class="sub-titulo">Cadeastre uma nova senha</p>
                 <hr>
 
@@ -48,11 +36,11 @@ Pet Lab | Login
                         <input type="password" class="form-control" placeholder="Senha" name="confirm_password">
                     </div>
                     <br>
-                    <button class="btn-first">Alterar</button>
+                    <button class="btn-logar">Alterar</button>
 
                 </form>
 
-<!--                <h3 style="position: absolute; bottom: 65px; font-weight: bold">Não tem uma conta ?&nbsp <a href="{% url 'cadastro' %}" class="btn btn-outline-success btn-lg">Registre-se</a> </h3>-->
+                <!--                <h3 style="position: absolute; bottom: 65px; font-weight: bold">Não tem uma conta ?&nbsp <a href="{% url 'cadastro' %}" class="btn btn-outline-success btn-lg">Registre-se</a> </h3>-->
             </div>
 
         </div>

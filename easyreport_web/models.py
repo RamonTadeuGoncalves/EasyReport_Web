@@ -167,15 +167,12 @@ class RelatorioDeServico(models.Model):
     relatorioOsNumero = models.ForeignKey(OrdemDeServico, on_delete=models.CASCADE)
     relatorioFuncRegistro = models.ForeignKey(Funcionario, on_delete=models.CASCADE)
     relatorioClienteRegistro = models.ForeignKey(Cliente, on_delete=models.CASCADE)
+    relatorioTipoServico = models.ForeignKey(TipoServico, on_delete=models.CASCADE)
     relatorioDescricao = models.CharField(max_length=200)
     relatorioContatoCliente = models.CharField(max_length=50)
     relatorioSetorClicente = models.CharField(max_length=50)
     relatorioData = models.DateField(auto_now=True)
-    # relatorioObservacao = models.CharField(max_length=200, null=True, blank=True)
     # relatorioFoto = models.FileField(null=True, blank=True)
-    # relatorioComentarioCliente = models.CharField(max_length=200, null=True, blank=True)
-    # relatorioOutros = models.CharField(max_length=100, null=True, blank=True)
-    relatorioTipoServico = models.ForeignKey(TipoServico, on_delete=models.CASCADE)
 
     class Meta:
         db_table = 'RelatorioDeServico'

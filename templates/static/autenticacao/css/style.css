@@ -1,5 +1,5 @@
 .containerheader {
-  background-color: #27db8f;
+  background-color: #152039;
 }
 
 .area_cadastrar {
@@ -25,7 +25,7 @@
 }
 
 .input-form:focus {
-  border: 2px solid #27db8f !important;
+  border: 2px solid #152039 !important;
   outline: 0 !important;
   box-shadow: none !important;
 }
@@ -38,7 +38,7 @@
   border: none;
   padding: 5px 15px 5px 15px;
   font-size: 25px;
-  background-color: #27db8f;
+  background-color: #152039;
   color: white;
   font-weight: bold;
 }
