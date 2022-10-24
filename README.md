@@ -21,18 +21,18 @@
     Foi desenvolvida como requisito para a matéria TG (Trabalho de Graduação) da FATEC Indaiatuba.<br>
     RELATÓRIO FÁCIL foi desenvolvido utilziando o framework Django.<br>
     Tecnologias utilizdas:<br>
-    - Django
-    - Python
-    - SQL
-    - HTML
-    - CSS
+    - Django<br>
+    - Python<br>
+    - SQL<br>
+    - HTML<br>
+    - CSS<br>
     - JS<br>
     <br>
     Alguma das características são:    
-    - Formulário simples para cadastro de funcionário, veículo, cliente e ordem de serviço;
-    - Os dados são salvos no banco de dados postgreSQL, também podenendo ser gerenciado pelo Django Admin;
-    - Listagem de funcionário, veículo, cliente, ordem de serviço e relatório de serviço;
-    - A listagem de relatório de serviço é uma integração com o aplicativo para dispositivos móveis que também faz parte do escopo do projeto;
+    - Formulário simples para cadastro de funcionário, veículo, cliente e ordem de serviço;<br>
+    - Os dados são salvos no banco de dados postgreSQL, também podenendo ser gerenciado pelo Django Admin;<br>
+    - Listagem de funcionário, veículo, cliente, ordem de serviço e relatório de serviço;<br>
+    - A listagem de relatório de serviço é uma integração com o aplicativo para dispositivos móveis que também faz parte do escopo do projeto;<br>
     - Edição e exclusão de cadastros.
 
 </p>
@@ -101,14 +101,14 @@
 
 <h3>Requisitos</h3>
 <p>
-  - Python (https://www.python.org/)
-  - pip (https://pypi.org/project/pip/)
-  - Django (https://www.djangoproject.com/)
-  - Crispy_forms (https://django-crispy-forms.readthedocs.io/en/latest
-  - crispy_bootstrap5 (https://github.com/django-crispy-forms/crispy-bootstrap5)
-  - PsycoPG2 (https://pypi.org/project/psycopg2/)
-  - PostgreSQL (https://www.postgresql.org/)
-  - pgAdmin (https://www.pgadmin.org/)
+  - Python (https://www.python.org/)<br>
+  - pip (https://pypi.org/project/pip/)<br>
+  - Django (https://www.djangoproject.com/)<br>
+  - Crispy_forms (https://django-crispy-forms.readthedocs.io/en/latest<br>
+  - crispy_bootstrap5 (https://github.com/django-crispy-forms/crispy-bootstrap5)<br>
+  - PsycoPG2 (https://pypi.org/project/psycopg2/)<br>
+  - PostgreSQL (https://www.postgresql.org/)<br>
+  - pgAdmin (https://www.pgadmin.org/)<br>
   - Necessário criar banco de dados conforme dados encontrados no arquivo settings.py
 </p>
 
@@ -125,6 +125,6 @@ python manage.py runserver
 
 ---
 
-> Esse projeto está desenvolvido com muito esforço por mim **[Ramon Tadeu Gonçalves](https://www.linkedin.com/in/ramon-gon%C3%A7alves-a900bb190/)** <br>
+> Esse projeto foi desenvolvido com muito esforço por mim **[Ramon Tadeu Gonçalves](https://www.linkedin.com/in/ramon-gon%C3%A7alves-a900bb190/)** <br>
 
 ---
