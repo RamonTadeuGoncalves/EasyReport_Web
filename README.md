@@ -1,5 +1,5 @@
 <p align="center">
-  RELATÓRIO FÁCIL
+  RELATÓRIO FÁCIL - Web
 </p>
 
 <h2 align="center">Tópicos 📋</h2>
@@ -32,7 +32,7 @@
     - Formulário simples para cadastro de funcionário, veículo, cliente e ordem de serviço;<br>
     - Os dados são salvos no banco de dados postgreSQL, também podenendo ser gerenciado pelo Django Admin;<br>
     - Listagem de funcionário, veículo, cliente, ordem de serviço e relatório de serviço;<br>
-    - A listagem de relatório de serviço é uma integração com o aplicativo para dispositivos móveis que também faz parte do escopo do projeto;<br>
+    - A listagem de relatório de serviço é uma integração com o aplicativo para dispositivos móveis **[Relatório Fácil - App](https://github.com/RamonTadeuGoncalves/EasyReport_App)** que também faz parte do escopo do projeto;<br>
     - Edição e exclusão de cadastros.
 
 </p>
