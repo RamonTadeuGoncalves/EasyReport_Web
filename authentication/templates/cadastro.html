@@ -11,6 +11,14 @@ Relatório Fácil | Cadastrar Funcionário
         <hr>
         <form class="form_cadastro" action="{% url 'cadastro' %}" method="POST">
             {% csrf_token %}
+            {% if messages %}
+            <br>
+            {% for message in messages %}
+            <div class="alert {{message.tags}}">
+                {{message}}
+            </div>
+            {% endfor %}
+            {% endif %}
 
             <div class="row">
                 <div class="col-lg-5 text_form">
@@ -89,6 +97,7 @@ Relatório Fácil | Cadastrar Funcionário
             <div>
                 <p id="formularioBotao">*Campos Obrigatórios.</p>
             </div>
+
 
             <div>
                 <div class="row">

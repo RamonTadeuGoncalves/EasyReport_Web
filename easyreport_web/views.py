@@ -1,5 +1,6 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from django.contrib.auth import authenticate, login, logout
+from authentication.models import Ativacao
 from django.contrib import messages
 from django.contrib.auth.models import User
 from easyreport_web.models import *
@@ -115,6 +116,10 @@ def editar_funcionario(request, nr_item):
 
 def excluir_funcionario(request, nr_item):
     item = get_object_or_404(Funcionario, pk=nr_item)
+    autenticacao = Ativacao.objects.get(pk = nr_item)
+    autenticacao.delete()
+    usuario = User.objects.get(pk = nr_item)
+    usuario.delete()
     item.delete()
     return render(request, 'excluido.html')
 

@@ -6,6 +6,10 @@ from django.shortcuts import render, redirect, get_object_or_404
 from authentication.forms import FuncionarioForm
 from authentication.models import Ativacao
 from authentication.utils import password_is_valid, email_html
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from django.utils.html import strip_tags
+from django.conf import settings
 from django.contrib.auth.models import User
 from django.contrib import messages, auth
 from django.contrib.messages import constants
@@ -17,7 +21,7 @@ from easyreport_web.models import Funcionario
 
 def cadastro(request):
     if request.method == 'GET':
-        if not request.user.is_authenticated:
+        if  request.user.is_authenticated:
             return redirect('/')
         form = FuncionarioForm()
         return render(request, 'cadastro.html', {'form': form})
@@ -56,22 +60,25 @@ def cadastro(request):
                     user.save()
                     form.save()
 
-
                     token = sha256(f"{usuario}{e_mail}".encode()).hexdigest()
                     ativacao = Ativacao(token=token, user=user)
                     ativacao.save()
 
-                    path_template = os.path.join(settings.BASE_DIR,
-                                                 'authentication/templates/emails/cadastro_confirmado.html')
-                    email_html(path_template, 'Cadastro confirmado', [e_mail, ], username=usuario, password=passwd,
-                               link_ativacao=f"127.0.0.1:8000/auth/ativar_conta/{token}")
+                    link_ativacao=f"127.0.0.1:8000/auth/ativar_conta/{token}"
 
-                    # messages.add_message(request, constants.SUCCESS, 'Usuário cadastrado com sucesso.')
+                    html_content = render_to_string('emails/cadastro_confirmado.html', {'username': usuario, 'password': passwd, 'link_ativacao': link_ativacao})
+                    text_content = strip_tags(html_content)
 
+                    email = EmailMultiAlternatives('Cadastro Confirmado!', text_content, settings.EMAIL_HOST_USER, [e_mail])
+                    email.attach_alternative(html_content, 'text/html')
+
+                    email.send()
                     return render(request, 'salvo.html', {})
+
                 except:
-                    messages.add_message(request, constants.ERROR, 'Erro interno do sistema.')
+                    messages.add_message(request, constants.ERROR, 'Erro interno do sistema 1.')
                     return render(request, 'cadastro.html', {'form': form})
+                    
             else:
                 try:
                     user = User.objects.create_superuser(username=usuario,
@@ -85,15 +92,20 @@ def cadastro(request):
                     ativacao = Ativacao(token=token, user=user)
                     ativacao.save()
 
-                    path_template = os.path.join(settings.BASE_DIR,
-                                                 'authentication/templates/emails/cadastro_confirmado.html')
-                    email_html(path_template, 'Cadastro confirmado', [e_mail, ], username=usuario, password=passwd,
-                               link_ativacao=f"127.0.0.1:8000/auth/ativar_conta/{token}")
+                    link_ativacao=f"127.0.0.1:8000/auth/ativar_conta/{token}"
 
-                    # messages.add_message(request, constants.SUCCESS, 'Usuário cadastrado com sucesso.')
+                    html_content = render_to_string('emails/cadastro_confirmado.html', {'username': usuario, 'password': passwd, 'link_ativacao': link_ativacao})
+                    text_content = strip_tags(html_content)
+
+                    email = EmailMultiAlternatives('Cadastro Confirmado!', text_content, settings.EMAIL_HOST_USER, [e_mail])
+                    email.attach_alternative(html_content, 'text/html')
+
+                    email.send()
+                                        
                     return render(request, 'salvo.html', {})
+
                 except:
-                    messages.add_message(request, constants.ERROR, 'Erro interno do sistema.')
+                    messages.add_message(request, constants.ERROR, 'Erro interno do sistema 2.')
                     return render(request, 'cadastro.html', {'form': form})
 
     else:

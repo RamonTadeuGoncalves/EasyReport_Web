@@ -11,9 +11,16 @@
 <body>
     <h1>Seja bem vindo {{username}}, sua conta foi criada com sucesso.</h1>
     <br>
-    <h1>Sua senha para primeiro acesso: </h1>
-    <h1>"{{ password }}"</h1>
+    <h2>Sua senha para primeiro acesso: </h2>
+    <h3>"{{ password }}"</h3>
     <span><a href="{{link_ativacao}}">CLIQUE AQUI</a> para ativar sua conta.</span>
+    <br>
+    <span>
+        <p>Caso o link nao esteja funcionando, copie e cole o código abaixo no navegador:</p>
+    </span>
+    <span>
+        <p>{{link_ativacao}}</p>
+    </span>
 </body>
 
 </html>
