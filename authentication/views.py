@@ -21,7 +21,7 @@ from easyreport_web.models import Funcionario
 
 def cadastro(request):
     if request.method == 'GET':
-        if  request.user.is_authenticated:
+        if not request.user.is_authenticated:
             return redirect('/')
         form = FuncionarioForm()
         return render(request, 'cadastro.html', {'form': form})

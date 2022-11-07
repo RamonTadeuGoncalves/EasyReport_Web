@@ -44,35 +44,6 @@ def logout_user(request):
     logout(request)
     return redirect('/')
 
-#FUNCIONARIO
-# def cadastrar_funcionario(request):
-#     if request.method == 'POST':
-#         form = FuncionarioForm(request.POST)
-#         if form.is_valid():
-#             form.save()
-
-#             lista_itens = Funcionario.objects.order_by('-funcRegistro')[0]
-#             usuario = lista_itens.funcNome            
-#             e_mail = lista_itens.funcEmail
-#             passwd = lista_itens.funcSenha
-#             cadastro = lista_itens.funcTipoCadastro    
-            
-#             if cadastro == 'Funcionario':
-#                 User.objects.create_user(
-#                     username=str(usuario), email = str(e_mail), password = str(passwd)
-#                 )
-#             else:
-#                 User.objects.create_superuser(
-#                     username=str(usuario), email = str(e_mail), password = str(passwd)
-#                 )
-                
-#             return render(request, 'salvo.html', {})
-    
-#     else:
-#         form = FuncionarioForm()
-    
-#     return render(request, 'cadastrar_funcionario.html', {'form':form})
-
 def listar_funcionario(request):
     lista_itens = Funcionario.objects.all()
     return render(request, 'listar_funcionario.html', {'lista_itens': lista_itens})
@@ -83,6 +54,7 @@ def funcionario(request, nr_item):
 
 def editar_funcionario(request, nr_item):    
     item = get_object_or_404(Funcionario, pk=nr_item)
+    
     form = FuncionarioForm(instance=item)
     if request.method == 'POST':
         form = FuncionarioForm(request.POST, instance=item)
@@ -103,6 +75,12 @@ def editar_funcionario(request, nr_item):
             item.funcCnh = form.cleaned_data['funcCnh']
             item.funcEnderecoEstado = form.cleaned_data['funcEnderecoEstado']
             item.funcTipoCadastro = form.cleaned_data['funcTipoCadastro']
+
+            user = User.objects.get(id=nr_item)
+            user.username = item.funcEmail
+            user.email = item.funcEmail
+            
+            user.save()   
 
             item.save()
 
