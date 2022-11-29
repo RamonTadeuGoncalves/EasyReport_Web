@@ -29,13 +29,13 @@ def submit_login(request):
         if usuario is not None:
             login(request, usuario)
             if usuario.has_perm('does.not.exist'):
-                return redirect('/index/')
+                return redirect('index/')
             else:
                 usuario
-                messages.error(request, 'Você não tem permissão')
+                messages.error(request, 'Você não tem permissão :(')
                 logout(request)
         else:
-            messages.error(request, 'Usuário ou senha inválido')
+            messages.error(request, 'Usuário ou senha inválidos')
 
     return redirect('/login/')
 

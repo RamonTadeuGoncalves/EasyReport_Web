@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $("#id_funcTelefone").mask("(00) 00000-0000");
   $("#id_clienteTelefone").mask("(00) 00000-0000");
-  $("#id_funcCpf").mask("00.000.000-00");
+  $("#id_funcCpf").mask("000.000.000-00");
   $("#id_funcCnh").mask("00000000000");
   $("#id_funcEnderecoCep").mask("00.000-000");
   $("#id_clienteEnderecoCep").mask("00.000-000");

@@ -1,6 +1,8 @@
 from datetime import date
 from hashlib import sha256
 import os
+import re
+from validate_docbr import CPF, CNPJ
 from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect, get_object_or_404
 from authentication.forms import FuncionarioForm
@@ -27,12 +29,14 @@ def cadastro(request):
         return render(request, 'cadastro.html', {'form': form})
     elif request.method == 'POST':
         form = FuncionarioForm(request.POST)
+        cpf = CPF()
         if form.is_valid():
             item = form.save(commit=False)
 
             item_funcNome = form.cleaned_data['funcNome']
             item_funcEmail = form.cleaned_data['funcEmail']
             item_funcTipoCadastro = form.cleaned_data['funcTipoCadastro']
+            item_funcCpf = form.cleaned_data['funcCpf']
 
             today = date.today()
             data = today.strftime("%Y")
@@ -50,6 +54,38 @@ def cadastro(request):
                 item = get_object_or_404(Funcionario, pk=item.funcRegistro)
                 item.delete()
                 return render(request, 'cadastro.html', {'form': form})
+            
+            # #formatacao
+            # if not re.match(r'\d{3}\.\d{3}\.\d{3}-\d{2}', item_funcCpf):
+            #     messages.add_message(request, constants.ERROR, 'CPF inválido')
+            #     return render(request, 'cadastro.html', {'form': form})
+            
+            # #quantidade de digitos
+            # numbers = [int(digit) for digit in item_funcCpf if digit.isdigit()]
+
+            # #verifica a quantidade
+            # if len(numbers) != 11 or len(set(numbers)) == 1:
+            #     messages.add_message(request, constants.ERROR, 'CPF inválido')
+            #     return render(request, 'cadastro.html', {'form': form})
+            
+            # #calculo para primeiro digito
+            # sum_of_products = sum(a*b for a, b in zip(numbers[0:9], range(10, 1, -1)))
+            # expected_digit = (sum_of_products * 10 % 11) % 10
+            # if numbers[9] != expected_digit:
+            #     messages.add_message(request, constants.ERROR, 'CPF inválido')
+            #     return render(request, 'cadastro.html', {'form': form})
+            
+            # #calculo para segundo digito
+            # sum_of_products = sum(a*b for a, b in zip(numbers[0:10], range(11, 1, -1)))
+            # expected_digit = (sum_of_products * 10 % 11) % 10
+            # if numbers[10] != expected_digit:
+            #     messages.add_message(request, constants.ERROR, 'CPF inválido')
+            #     return render(request, 'cadastro.html', {'form': form})
+
+            if not cpf.validate(item_funcCpf):
+                messages.add_message(request, constants.ERROR, 'CPF inválido')
+                return render(request, 'cadastro.html', {'form': form})
+
 
             if cadastro == 'Funcionario':
                 try:
@@ -76,7 +112,7 @@ def cadastro(request):
                     return render(request, 'salvo.html', {})
 
                 except:
-                    messages.add_message(request, constants.ERROR, 'Erro interno do sistema 1.')
+                    messages.add_message(request, constants.ERROR, 'Erro interno do sistema')
                     return render(request, 'cadastro.html', {'form': form})
                     
             else:
@@ -105,7 +141,7 @@ def cadastro(request):
                     return render(request, 'salvo.html', {})
 
                 except:
-                    messages.add_message(request, constants.ERROR, 'Erro interno do sistema 2.')
+                    messages.add_message(request, constants.ERROR, 'Erro interno do sistema')
                     return render(request, 'cadastro.html', {'form': form})
 
     else:
@@ -140,16 +176,16 @@ def logar(request):
             login(request, usuario)
             if usuario.has_perm('does.not.exist'):
                 if password == item_funcSenha:
-                    messages.add_message(request, constants.ERROR, 'Voce precisa trocar sua senha')
+                    messages.add_message(request, constants.ERROR, 'Você precisa trocar sua senha')
                     return redirect('/auth/alterar_senha')
                 else:
                     return redirect('/index/')
             elif password == item_funcSenha:
-                    messages.add_message(request, constants.ERROR, 'Voce precisa trocar sua senha')
+                    messages.add_message(request, constants.ERROR, 'Você precisa trocar sua senha')
                     return redirect('/auth/alterar_senha')
             else:
                 usuario
-                messages.add_message(request, constants.ERROR, 'Voce nao tem permissao')
+                messages.add_message(request, constants.ERROR, 'Você nao tem permissao')
                 logout(request)
                 return redirect('/auth/logar')
 
@@ -164,7 +200,7 @@ def ativar_conta(request, token):
     user.save()
     token.ativo = True
     token.save()
-    messages.add_message(request, constants.SUCCESS, 'Conta ativa com sucesso')
+    messages.add_message(request, constants.SUCCESS, 'Conta ativada com sucesso!!!')
 
     return redirect('/auth/logar')
 
@@ -181,7 +217,7 @@ def alterar_senha(request):
             usuario.set_password(password)
             usuario.save()
             logout(request)
-            messages.add_message(request, constants.SUCCESS, 'Senha cadastrada com sucesso')
+            messages.add_message(request, constants.SUCCESS, 'Senha cadastrada com sucesso!')
             return redirect('/auth/logar')
 
         except:

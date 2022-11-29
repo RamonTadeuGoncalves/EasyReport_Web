@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'crispy_bootstrap5',
     'rest_framework',
     'corsheaders',
+    'django_extensions',
 ]
 
 CRISPY_ALLOWED_TEMPLATE_PACKS = 'bootstrap5'
@@ -90,6 +91,7 @@ WSGI_APPLICATION = 'easyreport.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
+#LOCAL
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
@@ -100,6 +102,18 @@ DATABASES = {
         'PORT': '5432',
     }
 }
+
+#HOST
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#         'NAME': os.environ.get('DB_NAME', 'fatec_tg'),
+#         'USER': os.environ.get('DB_USER', 'postgres'),
+#         'PASSWORD': os.environ.get('DB_PASS', 'postgres@2022'),
+#         'HOST': 'localhost',
+#         'PORT': '5432',
+#     }
+# }
 
 
 # Password validation
@@ -140,10 +154,10 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static'),)
 # STATIC_ROOT = os.path.join('static')
-STATIC_ROOT = '/home/dominio/www/static'
+STATIC_ROOT = '/home/relatoriofacil/www/static'
 
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_ROOT = '/home/dominio/www/media'
+MEDIA_ROOT = '/home/relatoriofacil/www/media'
 # MEDIA_URL = '/media/'
 MEDIA_URL = 'media/'
 
@@ -172,3 +186,10 @@ EMAIL_HOST_PASSWORD = config('EMAIL_HOST_PASSWORD')
 EMAIL_USE_TLS = config('EMAIL_USE_TLS')
 EMAIL_PORT = config('EMAIL_PORT')
 EMAIL_HOST = config('EMAIL_HOST')
+
+
+#Diagrams
+GRAPH_MODELS = {
+  'all_applications': True,
+  'group_models': True,
+}
