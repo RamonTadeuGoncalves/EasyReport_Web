@@ -1,7 +1,5 @@
 from datetime import date
 from hashlib import sha256
-import os
-import re
 from validate_docbr import CPF, CNPJ
 from django.contrib.auth import login, logout
 from django.shortcuts import render, redirect, get_object_or_404
@@ -17,10 +15,11 @@ from django.contrib import messages, auth
 from django.contrib.messages import constants
 from django.conf import settings
 from easyreport_web.models import Funcionario
+from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
-
+@login_required(login_url='/auth/logar/')
 def cadastro(request):
     if request.method == 'GET':
         if not request.user.is_authenticated:
@@ -149,6 +148,7 @@ def cadastro(request):
 
     return render(request, 'cadastro.html', {'form': form})
 
+@login_required(login_url='/auth/logar/')
 def sair(request):
     auth.logout(request)
     return redirect('/auth/logar')
@@ -169,7 +169,7 @@ def logar(request):
         item_funcSenha = (f"Fatec_ads@{data}")
 
         if not usuario:
-            messages.add_message(request, constants.ERROR, 'Usuário ou senha inválidos')
+            messages.add_message(request, constants.ERROR, 'Usuário e/ou senha inválidos')
             return redirect('/auth/logar')
 
         elif usuario is not None:
@@ -185,7 +185,7 @@ def logar(request):
                     return redirect('/auth/alterar_senha')
             else:
                 usuario
-                messages.add_message(request, constants.ERROR, 'Você nao tem permissao')
+                messages.add_message(request, constants.ERROR, 'Você não tem permissão')
                 logout(request)
                 return redirect('/auth/logar')
 
@@ -221,7 +221,7 @@ def alterar_senha(request):
             return redirect('/auth/logar')
 
         except:
-            messages.add_message(request, constants.ERROR, 'Erro interno do sistema.')
+            messages.add_message(request, constants.ERROR, 'Erro interno do sistema')
             return redirect('/auth/alterar_senha')
 
     return render(request, 'alterar_senha.html')

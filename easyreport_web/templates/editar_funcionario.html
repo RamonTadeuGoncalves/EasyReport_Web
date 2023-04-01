@@ -11,6 +11,14 @@ Relatório Fácil | Editar Funcionário
         <hr>
         <form class="form_cadastro" action="" method="POST">
             {% csrf_token %}
+            {% if messages %}
+            <br>
+            {% for message in messages %}
+            <div class="alert {{message.tags}}">
+                {{message}}
+            </div>
+            {% endfor %}
+            {% endif %}
 
             <div class="row">
                 <div class="col-lg-5 text_form">
@@ -97,7 +105,7 @@ Relatório Fácil | Editar Funcionário
                         <button type="submit" class="btn btn-outline-success btn-lg">Salvar</button>
                     </div>
                     <div class="col-lg buttons_general ">
-                        <a class="btn btn-outline-secondary btn-lg" href="/relatorio_facil/listar_funcionario/">Cancelar</a>
+                        <a class="btn btn-outline-secondary btn-lg" href="/listar_funcionario/">Cancelar</a>
                     </div>
                 </div>
             </div>

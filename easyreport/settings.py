@@ -14,6 +14,7 @@ import os
 from pathlib import Path
 from decouple import config
 
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,8 +27,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-t+w)6unvshg#n*_j8wjcie8(fsxx2u@8sb0sazx5uz6s3@%#ek')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-# DEBUG = True
-DEBUG = os.environ.get('DJANGO_DEBUG','') != 'False'
+DEBUG = True
+# DEBUG = os.environ.get('DJANGO_DEBUG','') != 'False'
 
 
 ALLOWED_HOSTS = ['10.0.2.2', '127.0.0.1']
@@ -97,7 +98,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': os.environ.get('DB_NAME', 'fatec_tg'),
         'USER': os.environ.get('DB_USER', 'postgres'),
-        'PASSWORD': os.environ.get('DB_PASS', 'postgres@2022'),
+        'PASSWORD': os.environ.get('DB_PASS', '@2023Postgres'),
         'HOST': 'localhost',
         'PORT': '5432',
     }
@@ -153,11 +154,11 @@ USE_TZ = True
 # STATIC_URL = '/static/'
 STATIC_URL = '/static/'
 STATICFILES_DIRS = (os.path.join(BASE_DIR, 'templates/static'),)
-# STATIC_ROOT = os.path.join('static')
-STATIC_ROOT = '/home/relatoriofacil/www/static'
+STATIC_ROOT = os.path.join('static')
+# STATIC_ROOT = '/home/relatoriofacil/www/static'
 
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
-MEDIA_ROOT = '/home/relatoriofacil/www/media'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+# MEDIA_ROOT = '/home/relatoriofacil/www/media'
 # MEDIA_URL = '/media/'
 MEDIA_URL = 'media/'
 

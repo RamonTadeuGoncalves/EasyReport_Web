@@ -11,6 +11,14 @@ Relatório Fácil | Cadastrar Cliente
         <hr>
         <form class="form_cadastro" action="" method="POST">
             {% csrf_token %}
+            {% if messages %}
+            <br>
+            {% for message in messages %}
+            <div class="alert {{message.tags}}">
+                {{message}}
+            </div>
+            {% endfor %}
+            {% endif %}
             <div class="row">
                 <div class="col-lg-5 text_form">
                     {{ form.clienteCnpj|as_crispy_field }}
@@ -87,7 +95,7 @@ Relatório Fácil | Cadastrar Cliente
                         <button type="submit" class="btn btn-outline-success btn-lg">Cadastrar</button>
                     </div>
                     <div class="col-lg buttons_general ">
-                        <a class="btn btn-outline-secondary btn-lg" href="/relatorio_facil/index/">Cancelar</a>
+                        <a class="btn btn-outline-secondary btn-lg" href="/index/">Cancelar</a>
                     </div>
                 </div>
             </div>

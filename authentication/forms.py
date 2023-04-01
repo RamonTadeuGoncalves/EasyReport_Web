@@ -1,5 +1,9 @@
 from django import forms
+
 from easyreport_web.models import Funcionario
+
+
+# from EasyReport_Web.easyreport_web.models import Funcionario
 
 
 class FuncionarioForm(forms.ModelForm):
